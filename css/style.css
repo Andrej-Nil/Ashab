@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+/*# sourceMappingURL=style.css.map */
