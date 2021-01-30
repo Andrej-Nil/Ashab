@@ -1,0 +1,36 @@
+.h-contact {
+  background-color: #fff;
+}
+.h-contact__inner {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.logo__img {
+  width: 100px;
+  height: auto;
+}
+
+.h-contact__list {
+  display: flex;
+  margin-left: auto;
+}
+
+.h-contact__item {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1d295d;
+  margin-right: 100px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.h-contact__icon {
+  display: inline-block;
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}

@@ -1,0 +1,55 @@
+.main-carousel {
+  position: relative;
+  margin-bottom: 1px;
+}
+.m-c-slide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: radial-gradient(
+    308.6% 100% at 30.62% 0%,
+    #1d295d 0%,
+    #264393 100%
+  );
+}
+
+.m-c-slide__text {
+  font-family: Avenir;
+  padding-top: 25px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 120%;
+}
+
+.slide-num {
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 120px;
+  color: #9dcefc;
+}
+
+.slide-bold {
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 120px;
+}
+
+.m-c__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+}
+
+.m-c__left {
+  left: 0;
+  margin-left: 43px;
+}
+
+.m-c__right {
+  right: 0;
+  margin-right: 43px;
+}
