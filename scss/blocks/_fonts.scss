@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
 @font-face {
   font-family: "Avenir";
   src: url("../fonts/AvenirNextCyr-Regular.eot");
@@ -26,5 +28,16 @@
     url("../fonts/AvenirNextCyr-Bold.woff") format("woff"),
     url("../fonts/AvenirNextCyr-Bold.ttf") format("truetype");
   font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("../fonts/AvenirNextCyr-Heavy.eot");
+  src: local("Avenir Next Cyr Heavy"), local("AvenirNextCyr-Heavy"),
+    url("../fonts/AvenirNextCyr-Heavy.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/AvenirNextCyr-Heavy.woff") format("woff"),
+    url("../fonts/AvenirNextCyr-Heavy.ttf") format("truetype");
+  font-weight: 900;
   font-style: normal;
 }
