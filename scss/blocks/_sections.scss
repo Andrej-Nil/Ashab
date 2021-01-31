@@ -1,5 +1,5 @@
 .sections {
-  text-align-last: right;
+  margin-bottom: 100px;
 }
 
 .sections-list {
@@ -45,6 +45,9 @@
   position: absolute;
   left: 0;
   bottom: 0;
+  border: 2px solid #9dcefc;
+  width: 240px;
+  height: 202px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -80,7 +83,4 @@
 
 .sections-card__arrow {
   margin-left: auto;
-}
-
-.section__link {
 }

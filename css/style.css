@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
 @font-face {
   font-family: "Avenir";
   src: url("../fonts/AvenirNextCyr-Regular.eot");
@@ -55,6 +55,15 @@ h2,
   line-height: 95.2%;
 }
 
+h3,
+.h3 {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+}
+
 a {
   text-decoration: none;
   color: #fff;
@@ -91,6 +100,7 @@ li {
 
 .main-bg {
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: -1;
@@ -101,7 +111,7 @@ li {
   width: 100%;
 }
 
-.title-section {
+.section-title {
   margin-bottom: 40px;
 }
 
@@ -122,6 +132,7 @@ li {
 }
 
 .light-btn {
+  display: inline-block;
   padding: 12px 42px;
   background: #9dcefc;
   font-family: "Avenir", sans-serif;
@@ -140,6 +151,48 @@ li {
 
 .light-btn:active {
   background: #6cb6fa;
+}
+
+.dark-btn {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-style: 400;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #9dcefc;
+  background: #264393;
+  border: 1px solid #9dcefc;
+  padding: 12px 46px;
+  -webkit-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.dark-btn:hover {
+  background: #9dcefc;
+  color: #264393;
+}
+
+.dark-btn:active {
+  background: #aed7fc;
+  color: #1d295d;
+}
+
+.sticker-sale {
+  display: inline-block;
+  padding: 5px 12px;
+  background: radial-gradient(100% 100% at 50% 0%, #dc1515 0%, #bb0808 100%);
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 95.2%;
+}
+
+.right-edge {
+  text-align: right;
 }
 
 .h-nav {
@@ -371,7 +424,7 @@ li {
 }
 
 .sections {
-  text-align-last: right;
+  margin-bottom: 100px;
 }
 
 .sections-list {
@@ -425,6 +478,9 @@ li {
   position: absolute;
   left: 0;
   bottom: 0;
+  border: 2px solid #9dcefc;
+  width: 240px;
+  height: 202px;
   -webkit-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
 }
@@ -466,5 +522,64 @@ li {
 
 .sections-card__arrow {
   margin-left: auto;
+}
+
+.product-card {
+  position: relative;
+  width: 100%;
+  padding: 0 0 20px 25px;
+  margin-bottom: 20px;
+}
+
+.product-card:last-child {
+  margin-bottom: 0;
+}
+
+.products__wrap {
+  margin-bottom: 20px;
+}
+
+.product-card__desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #264393;
+  height: 150px;
+  padding: 23px 15px 0 198px;
+  -webkit-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-card__text {
+  margin-right: 52px;
+}
+
+.product-card__title {
+  margin-bottom: 37px;
+}
+
+.product-card__img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 198px;
+  height: 150px;
+  border: 2px solid #9dcefc;
+}
+
+.product-card__price {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.product-card__price--blue {
+  color: #9dcefc;
+}
+
+.product-card__sticker {
+  margin-bottom: 23px;
 }
 /*# sourceMappingURL=style.css.map */

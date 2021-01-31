@@ -20,6 +20,15 @@ h2,
   font-size: 50px;
   line-height: 95.2%;
 }
+
+h3,
+.h3 {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+}
 a {
   text-decoration: none;
   color: #fff;
@@ -49,6 +58,7 @@ li {
 
 .main-bg {
   position: absolute;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: -1;
@@ -59,7 +69,7 @@ li {
   width: 100%;
 }
 
-.title-section {
+.section-title {
   margin-bottom: 40px;
 }
 
@@ -76,6 +86,7 @@ li {
 }
 
 .light-btn {
+  display: inline-block;
   padding: 12px 42px;
   background: #9dcefc;
 
@@ -94,4 +105,42 @@ li {
   &:active {
     background: #6cb6fa;
   }
+}
+
+.dark-btn {
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+  font-style: 400;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #9dcefc;
+  background: #264393;
+  border: 1px solid #9dcefc;
+  padding: 12px 46px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background: #9dcefc;
+    color: #264393;
+  }
+  &:active {
+    background: #aed7fc;
+    color: #1d295d;
+  }
+}
+
+.sticker-sale {
+  display: inline-block;
+  padding: 5px 12px;
+  background: radial-gradient(100% 100% at 50% 0%, #dc1515 0%, #bb0808 100%);
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 95.2%;
+}
+
+.right-edge {
+  text-align: right;
 }
