@@ -1,0 +1,49 @@
+.reviews {
+  margin-bottom: 8px;
+}
+
+.reviews-wrap {
+  margin-bottom: 30px;
+}
+
+.review {
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 30px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.review__content {
+  padding: 33px 33px 30px 119px;
+  background: #264393;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+}
+
+.review__auther {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 100%;
+  margin-bottom: 19px;
+}
+
+.review__text {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.review__photo {
+  position: absolute;
+  left: 0;
+  top: 23px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid #9dcefc;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+}

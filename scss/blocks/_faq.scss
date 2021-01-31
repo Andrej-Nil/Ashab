@@ -1,0 +1,126 @@
+.faq {
+  margin-bottom: 100px;
+}
+
+.faq-questions {
+  margin-bottom: 30px;
+}
+
+.faq-question {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 120%;
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:hover .question__answer {
+    max-height: 700px;
+    padding: 10px 90px 42px 58px;
+  }
+}
+
+.question__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #264393;
+  padding: 10px 20px 10px 58px;
+}
+
+.question__arrow {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 15px;
+  height: 15px;
+  transform: translate(0, -50%);
+}
+
+.question__answer {
+  overflow: hidden;
+  background: #264393;
+  max-height: 0;
+  padding: 0 90px 0 58px;
+  transition: 0.2s ease-in-out;
+}
+
+.faq-form__title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #9dcefc;
+  margin-bottom: 15px;
+}
+
+.faq-form__body {
+  display: flex;
+}
+
+.faq-form__input {
+  height: 50px;
+  width: 100%;
+  padding: 0 24px;
+  outline: none;
+  border: none;
+
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #1d295d;
+}
+
+.faq-form__input::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #808080;
+}
+.faq-form__input::-webkit-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #808080;
+}
+.faq-form__input:-ms-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #808080;
+}
+.faq-form__input::-moz-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #808080;
+}
+.faq-form__input:-moz-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: #808080;
+}
+
+.faq-form__submit {
+  height: 50px;
+  flex: 0 0 200px;
+  outline: none;
+  border: none;
+}
