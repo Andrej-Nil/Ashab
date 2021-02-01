@@ -19,8 +19,11 @@
 .h-contact__item {
   display: flex;
   align-items: center;
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 20px;
-  font-weight: 500;
+  line-height: 95.2%;
   color: #1d295d;
   margin-right: 100px;
   &:last-child {

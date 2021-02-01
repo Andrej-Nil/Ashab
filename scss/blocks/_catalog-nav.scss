@@ -1,0 +1,118 @@
+.form-search {
+  margin-bottom: 40px;
+}
+
+.form-search__input {
+  outline: none;
+  border: none;
+  padding: 10px;
+  background: fff;
+  width: 100%;
+  height: 40px;
+
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #1d295d;
+  border: 2px solid #fff;
+  transition: 0.2s ease-in-out;
+  &:focus {
+    border: 2px solid #9dcefc;
+  }
+}
+
+.faq-form__input::-webkit-input-placeholder {
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #808080;
+}
+.faq-form__input:-ms-input-placeholder {
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #808080;
+}
+.faq-form__input::-moz-placeholder {
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #808080;
+}
+.faq-form__input:-moz-placeholder {
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #808080;
+}
+
+.nav-catalog {
+  width: 100%;
+  background: #264393;
+  padding: 20px 16px;
+}
+
+.category__item {
+  margin-bottom: 18px;
+
+  &:hover .product__list {
+    max-height: 2000px;
+    padding: 20px 0 18px 27px;
+  }
+}
+
+.category__name {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.category__arrow {
+  width: 11px;
+  height: 11px;
+  margin-right: 7px;
+}
+
+.category__title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 95.2%;
+}
+
+.product__list {
+  padding: 0 0 0 25px;
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.2s ease-in-out;
+}
+
+.products__item {
+  margin-bottom: 18px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.product__link {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    color: #9dcefc;
+  }
+}

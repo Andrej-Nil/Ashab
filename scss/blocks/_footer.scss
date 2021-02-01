@@ -1,1 +1,70 @@
+.footer {
+  padding: 50px 0 150px 0;
+  background: #264393;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+}
 
+.f-content {
+  display: flex;
+}
+
+.f-nav {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.f-nav__list {
+  display: flex;
+}
+
+.f-nav__item {
+  margin-right: 40px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.f-nav__link {
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  &:hover {
+    color: #9dcefc;
+  }
+}
+
+.f-nav__link--is-active {
+  color: #9dcefc;
+}
+
+.f-login {
+  margin-left: auto;
+}
+
+.f-login__btn {
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 95.2%;
+  &:hover {
+    color: #9dcefc;
+  }
+}
+
+.f__title {
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 95.2%;
+  margin-bottom: 26px;
+}
+
+.f-logo {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}

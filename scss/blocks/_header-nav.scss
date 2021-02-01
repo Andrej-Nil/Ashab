@@ -32,11 +32,18 @@
 
 .h-nav__link {
   font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 18px;
+  line-height: 95.2%;
   transition: 0.2s ease-in-out;
   &:hover {
     color: #9dcefc;
   }
+}
+
+.h-nav__link--is-active {
+  color: #9dcefc;
 }
 
 .h-login {
@@ -45,7 +52,10 @@
 
 .h-login__btn {
   font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: normal;
   font-size: 18px;
+  line-height: 95.2%;
   cursor: pointer;
   transition: 0.2s ease-in-out;
   &:hover {
