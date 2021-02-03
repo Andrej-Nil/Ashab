@@ -64,11 +64,6 @@
 
 .category__item {
   margin-bottom: 18px;
-
-  &:hover .product__list {
-    max-height: 2000px;
-    padding: 20px 0 18px 27px;
-  }
 }
 
 .category__name {
@@ -81,6 +76,12 @@
   width: 11px;
   height: 11px;
   margin-right: 7px;
+  transition: 0.2s ease-in-out;
+}
+
+.category__arrow.arrow-up {
+  transform-origin: center;
+  transform: rotate(90deg);
 }
 
 .category__title {
@@ -92,10 +93,15 @@
 }
 
 .product__list {
-  padding: 0 0 0 25px;
+  padding: 0 18px 0 25px;
   overflow: hidden;
   max-height: 0;
   transition: 0.2s ease-in-out;
+}
+
+.product__list.is-show {
+  max-height: 2000px;
+  padding: 20px 0 18px 27px;
 }
 
 .products__item {

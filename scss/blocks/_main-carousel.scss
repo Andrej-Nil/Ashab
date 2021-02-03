@@ -1,8 +1,22 @@
 .main-carousel {
   position: relative;
   margin-bottom: 1px;
+  min-height: 200px;
+  overflow: hidden;
 }
+
+.m-c_slides {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  transition: 0.2 ease-in-out;
+}
+
 .m-c-slide {
+  flex: 0 0 100%;
+}
+
+.m-c-slide__content {
   display: flex;
   justify-content: space-between;
   align-items: center;

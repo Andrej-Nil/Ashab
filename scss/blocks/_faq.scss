@@ -14,12 +14,9 @@
   font-size: 20px;
   line-height: 120%;
   margin-bottom: 15px;
+  cursor: pointer;
   &:last-child {
     margin-bottom: 0;
-  }
-  &:hover .question__answer {
-    max-height: 700px;
-    padding: 10px 90px 42px 58px;
   }
 }
 
@@ -31,13 +28,21 @@
   padding: 10px 20px 10px 58px;
 }
 
-.question__arrow {
+.question__arrow-wrap {
   position: absolute;
   top: 50%;
   left: 20px;
+  transform: translate(0, -50%);
+}
+.question__arrow {
   width: 15px;
   height: 15px;
-  transform: translate(0, -50%);
+  transition: 0.2s ease-in-out;
+}
+
+.question__arrow.arrow-up {
+  transform-origin: center;
+  transform: rotate(-180deg);
 }
 
 .question__answer {
@@ -46,6 +51,11 @@
   max-height: 0;
   padding: 0 90px 0 58px;
   transition: 0.2s ease-in-out;
+}
+
+.question__answer.is-show {
+  max-height: 2000px;
+  padding: 10px 90px 42px 58px;
 }
 
 .faq-form__title {

@@ -8,11 +8,15 @@
   background: rgba(0, 0, 0, 0.801);
 }
 
+.shading--is-show {
+  display: flex;
+}
+
 .modal {
   position: relative;
-  display: flex;
+  display: none;
   align-items: center;
-  //margin: 200px auto 0;
+  margin: 200px auto 0;
   margin: auto;
   width: 700px;
   background: #ffffff;
@@ -22,6 +26,10 @@
 }
 .modal__content {
   width: 100%;
+}
+
+.modal--is-show {
+  display: flex;
 }
 
 .close {
