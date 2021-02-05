@@ -41,10 +41,28 @@ h4,
   font-size: 30px;
   line-height: 95.2%;
 }
+
+.other-products {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 95.2%;
+  margin-bottom: 40px;
+}
 a {
   text-decoration: none;
   color: #fff;
 }
+
+.link {
+  color: #fff;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    color: #9dcefc;
+  }
+}
+
 img {
   display: block;
 }
@@ -178,7 +196,7 @@ li {
 }
 
 .desc-block-wrap {
-  margin-bottom: 130px;
+  margin-bottom: 100px;
 }
 
 .desc-block {
@@ -218,13 +236,27 @@ li {
 }
 
 .desc-block__text {
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
   line-height: 130%;
 }
 
+.desc-block__list {
+  padding-left: 47px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 100%;
+}
+
+.desc-block__item {
+  display: inline-block;
+  width: 178px;
+  margin: 0 20px 10px 0;
+}
 .desc-block__img {
   width: 300px;
   height: 300px;
@@ -237,4 +269,40 @@ li {
 
 .not-shadow {
   box-shadow: none;
+}
+
+.desc-block__order {
+  text-align: right;
+  margin-bottom: 19px;
+}
+
+.desc-block__price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.desc-block__price-text {
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.desc-block__price-num--blue {
+  color: #9dcefc;
+}
+
+.desc-block__sticker {
+  position: absolute;
+  top: 18px;
+}
+
+.serch__request {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 95.2%;
+  margin-bottom: 40px;
 }

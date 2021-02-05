@@ -29,11 +29,8 @@
   font-family: "Avenir", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 95.2%;
-  &:hover {
-    color: #9dcefc;
-  }
 }
 
 .f-nav__link--is-active {
@@ -50,6 +47,8 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 95.2%;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
   &:hover {
     color: #9dcefc;
   }
