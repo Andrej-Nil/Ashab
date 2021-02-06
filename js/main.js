@@ -59,4 +59,14 @@ function slow(el) {
 }
 
 
-
+// Map
+//let map;
+//let marker;
+//const coordinates = [48.406285, 135.161829]
+//function initMap() {
+//  map = new ymaps.Map("yandexmap", {
+//    center: coordinates,
+//    zoom: 16
+//  });
+//}
+//ymaps.ready(initMap);
