@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href='./css/style.min.css'>
-  <title>Категории 2-3lvl</title>
+  <title>Категории</title>
 </head>
 
 <body>
@@ -93,9 +93,9 @@
           <div class="path">
             <a href="index.html" class="path__link">Главная</a>
             <span class="path__slash">/</span>
-            <a href="catalog.html" class="path__link">Поиск по товару</a>
+            <a href="catalog.html" class="path__link">Каталог</a>
             <span class="path__slash">/</span>
-            <a href="sale.html" class="path__link">Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ 8734</a>
+            <a href="sale.html" class="path__link">Производство металлоконструкций</a>
           </div>
         </div>
         <!--path-->
@@ -265,9 +265,9 @@
                     </div>
 
                     <div class="product-card__other">
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -289,9 +289,9 @@
                     </div>
 
                     <div class="product-card__other">
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -313,9 +313,9 @@
                     </div>
 
                     <div class="product-card__other">
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -337,9 +337,9 @@
                     </div>
 
                     <div class="product-card__other">
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -361,17 +361,14 @@
                     </div>
 
                     <div class="product-card__other">
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
                 </div>
 
-              </div>
-              <div class="products__btn right-edge">
-                <a href="#!" class="light-btn">Посмотреть все</a>
               </div>
 
             </div>
@@ -1226,23 +1223,6 @@
 
     <!--modal-windows-->
     <div id="shading" class='shading'>
-      <!--faq group-->
-      <div class="faq-modal modal">
-        <div class="close">
-          <span class="close__word">
-            Закрыть
-          </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
-        </div>
-        <div class="modal__content">
-          <h4 class="modal__title">Почти готово!</h4>
-          <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
-          <form class='modal__form' action="" method="POST">
-            <input class="modal__input" type="text" placeholder="Ваша почта">
-            <input class="modal__submit light-btn" type="submit" value="Отправить">
-          </form>
-        </div>
-      </div>
 
       <div class="faq-modal modal">
         <div class="close">
@@ -1302,12 +1282,12 @@
       <!--Заявка группа-->
 
       <!--заказ-->
-      <div class="order-modal modal">
+      <div id='order' class="order-modal modal">
         <div class="close">
-          <span class="close__word">
+          <span class="close__word close-btn">
             Закрыть
           </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
+          <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
         <div class="modal__content">
           <h4 class="modal__title">Ваш заказ!</h4>

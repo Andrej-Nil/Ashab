@@ -125,8 +125,10 @@ li {
   font-size: 18px;
   line-height: 95.2%;
   color: #1d295d;
-  transition: 0.2s ease-in;
 
+  transition: 0.2s ease-in;
+  outline: none;
+  cursor: pointer;
   &:hover {
     background: #b6dbfd;
   }
@@ -149,6 +151,8 @@ li {
   padding: 12px 46px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
   transition: 0.2s ease-in-out;
+  outline: none;
+  cursor: pointer;
   &:hover {
     background: #9dcefc;
     color: #264393;

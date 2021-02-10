@@ -1,44 +1,179 @@
 "use strict";
 const body = document.querySelector('body');
-// Открытие и закрытие модульных окон
+
+//Карусели
+const sensitivity = 20; // кол пикселей для регистрации движения
+let touchStart = null; // начало движение по сенсеру
+let touchPosition = null; // растояние пройденое по сенсеру
+
+// начало Главная карусель
+if (document.querySelector('#mainCarousel')) {
+  const mainCarousel = document.querySelector('#mainCarousel');
+  const mainCarouselSlidesWrap = mainCarousel.querySelector('#mainCarouselSlidesWrap');
+  const mainCarouselSlides = mainCarousel.querySelectorAll('.m-c-slide');
+  const totalSlides = mainCarouselSlides.length;
+  let MainCarousel = 0;
+  const mainCarouselLeft = mainCarousel.querySelector('#mainCarouselLeft');
+  const mainCarouselRight = mainCarousel.querySelector('#mainCarouselRight');
+
+  //Добовляем события для управлению главной каруселью
+  mainCarouselRight.addEventListener('click', mainCarouselNextSlide);
+
+  mainCarouselLeft.addEventListener('click', mainCarouselPrevSlide);
+  // Управление сенсером 
+  // Начало движения
+  mainCarousel.addEventListener('touchstart', function (e) { startTouchMove(e) });
+  // Отслеживает путь и растояние
+  mainCarousel.addEventListener('touchmove', function (e) { touchMove(e) });
+  // Окончание движение
+  mainCarousel.addEventListener('touchend', function () { touchEnd(mainCarouselNextSlide, mainCarouselPrevSlide) });
+
+  //Адаптация карусели при изменении экрана
+  window.addEventListener(`resize`, () => {
+    const widthMainCarousel = getWidthEl(mainCarousel);
+    mainCarouselSlidesWrap.style.left = -widthMainCarousel * MainCarousel + 'px';
+  }, false);
+
+  //Управление каручеле стрелками
+  function mainCarouselNextSlide() {
+    const step = getWidthEl(mainCarousel);
+    if (MainCarousel == totalSlides - 1) {
+      mainCarouselSlidesWrap.style.left = 0;
+      MainCarousel = 0;
+      return
+    }
+    mainCarouselSlidesWrap.style.left = (parseInt(mainCarouselSlidesWrap.style.left, 10) - step) + 'px';
+    MainCarousel++;
+
+  }
+
+  function mainCarouselPrevSlide() {
+    const step = getWidthEl(mainCarousel);
+    if (MainCarousel == 0) {
+      mainCarouselSlidesWrap.style.left = - (step * (totalSlides - 1)) + 'px';
+      MainCarousel = 2;
+      return
+    }
+    mainCarouselSlidesWrap.style.left = (parseInt(mainCarouselSlidesWrap.style.left, 10)
+      + step) + 'px';
+    MainCarousel--;
+    clearInterval(test);
+  }
+
+  //автолистание
+  let test = setInterval(mainCarouselNextSlide, 10000)
+}
+//конец Главная карусель
+
+// Управление каруселью сенсером
+// Начало движения
+function startTouchMove(e) {
+  touchStart = e.changedTouches[0].clientX;
+  touchPosition = touchStart;
+}
+
+//Отслеживает джижение
+function touchMove(e) {
+  touchPosition = e.changedTouches[0].clientX;
+}
+
+// Конец движения
+function touchEnd(next, prev) {
+  let distance = touchStart - touchPosition;
+  if (distance > 0 && distance >= sensitivity) {
+    next();
+  }
+  if (distance < 0 && distance * -1 >= sensitivity) {
+    prev();
+  }
+}
+
+
+//Открытие и закрытие модульных окон
 const bgModal = document.querySelector('#shading'); // темный фон окон
+const faqModal = document.querySelector('#faqModal'); // темный фон faqModalBg
+const closeFaqBtns = document.querySelectorAll('.close-faq-btn');
 const application = document.querySelector('#application'); // Онлайн заявка(btn)
-const applicationModal = document.querySelector('#applicationModal');
+const applicationModal = document.querySelector('#applicationModal');// онлайн заявка(окно)
+const order = document.querySelector('#order') // заказ(окно)
+const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
+const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
+const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
 
-const closeBtn = document.querySelectorAll('.close-btn');
 
-console.log(applicationModal)
-//applicationModal.classList.remove('modal--is-show');
+//Устанавливает высоту bgModal
+setBgModalHeight(bgModal);
 
-// Устанавливает высоту bgModal
-let bgModalHeight = setBgModalHeight();
-application.addEventListener('click', slowModalApplication);
+window.addEventListener(`resize`, () => {
+  setBgModalHeight(bgModal);
+  setBgModalHeight(faqModal);
+}, false);
 
-Array.from(closeBtn).forEach((el) => {
-  el.addEventListener('click', function () { closeModal(el) })
+// добовляем фунцию отктрытия окна онлайн заявки
+application.addEventListener('click', () => {
+  showModal(applicationModal)
 });
 
-function closeModal(el) {
-  let modal = el.closest('.modal');
-  modal.classList.remove('modal--is-show');
-  bgModal.classList.remove('shading--is-show');
-  console.log(modal)
+// добовляем фунцию отктрытия окна заказ
+Array.from(orderBtns).forEach((el) => {
+  el.addEventListener('click', () => { showModal(order) });
+});
+
+// Добовляем функцию закрытия для модульных окон
+Array.from(closeBtn).forEach((el) => {
+  el.addEventListener('click', () => { closeModal(el) });
+});
+
+
+//окно faq
+if (faqModal) {
+  setBgModalHeight(faqModal);
+  window.addEventListener(`resize`, () => {
+    setBgModalHeight(faqModal);
+  }, false);
+
+  // добовляем фунцию отктрытия окна faq
+  faqFormBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    showFaqModal();
+  })
 }
 
-// Открывает окна онлайн заявка
-function slowModalApplication() {
-  bgModal.classList.add('shading--is-show');
-  applicationModal.classList.add('modal--is-show');
-}
 
 
-
+Array.from(closeFaqBtns).forEach((el) => {
+  el.addEventListener('click', () => { closeFaqModal() });
+});
 
 
 // Устанавливает высоту bgModal
-function setBgModalHeight() {
-  bgModal.style.height = window.innerHeight + 'px';
-  console.log(window.innerHeight);
+function setBgModalHeight(idbgModal) {
+  idbgModal.style.height = window.innerHeight + 'px';
+}
+
+
+//Функция открытия модульного faq
+function showFaqModal() {
+  faqModal.classList.add('modal--is-show')
+}
+//Функция закрытия модульного faq
+function closeFaqModal() {
+  faqModal.classList.remove('modal--is-show')
+}
+
+//Функция открытия модульного окна
+function showModal(idModal) {
+  bgModal.classList.add('shading--is-show');
+  idModal.classList.add('modal--is-show');
+  body.classList.add('is-no-scroll');
+}
+
+// Функция закрытия модульных окон
+function closeModal(el) {
+  const modal = el.closest('.modal');
+  modal.classList.remove('modal--is-show');
+  bgModal.classList.remove('shading--is-show');
+  body.classList.remove('is-no-scroll');
 }
 
 
@@ -51,22 +186,47 @@ document.onclick = function (e) {
 }
 
 function slow(el) {
-  let patent = el.closest('.parent-hiddne-el')
-  let hiddenEl = patent.querySelector('.hidden');
-  let arrow = patent.querySelector('.arrow-show');
+  let parent = el.closest('.parent-hiddne-el')
+  let hiddenEl = parent.querySelector('.hidden');
+  let arrow = parent.querySelector('.arrow-show');
   hiddenEl.classList.toggle('is-show');
   arrow.classList.toggle('arrow-up');
 }
 
 
-// Map
-//let map;
-//let marker;
-//const coordinates = [48.406285, 135.161829]
-//function initMap() {
-//  map = new ymaps.Map("yandexmap", {
-//    center: coordinates,
-//    zoom: 16
-//  });
-//}
-//ymaps.ready(initMap);
+// яндеск карта
+
+// блок отображающий карту
+const yandexmap = document.querySelector('#yandexmap');
+if (yandexmap) {
+  let map;
+  let marker;
+  // Координаты
+  // Для изменение координат, необходимо 
+  // записать новst значенить в атребуте 
+  // "data-coord" в блоке id='yandexmap'
+  // певое значение ширина, второе долгота
+  // через запитею
+  const dataCoord = yandexmap.getAttribute('data-coord')
+  const coordinates = dataCoord.split(',');
+
+  function initMap() {
+    map = new ymaps.Map("yandexmap", {
+      center: coordinates,
+      zoom: 16
+    });
+    marker = new ymaps.Placemark(coordinates, {
+      hintContent: 'Расположение',
+      balloonContent: 'Это наша организация'
+    });
+    map.geoObjects.add(marker);
+  }
+  ymaps.ready(initMap);
+}
+
+
+
+//возвращает ширину елемента
+function getWidthEl(el) {
+  return el.clientWidth;
+}

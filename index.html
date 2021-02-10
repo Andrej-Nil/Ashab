@@ -87,14 +87,14 @@
   </header>
   <div class="wrap">
     <!--main-carousel-->
-    <div class='main-carousel m-c'>
-      <div class='m-c_slides'>
+    <div id='mainCarousel' class='main-carousel m-c'>
+      <div id="mainCarouselSlidesWrap" class='m-c__slides' style="left: 0">
         <div class="m-c-slide">
           <a href="#!" class="m-c__link">
             <div class="m-c-slide__content">
               <img src="./img/image/m-c-left.png" alt="" class="m-c-slide__img">
               <p class="m-c-slide__text">
-                <span class='slide-num'>1500</span> <span class="slide-bold">тонн</span><br />
+                <span class='slide-num'>1501</span> <span class="slide-bold">тонн</span><br />
                 металлопроката всегда в наличии
               </p>
               <img src="./img/image/m-c-right.png" alt="" class="m-c-slide__img">
@@ -106,7 +106,7 @@
             <div class="m-c-slide__content">
               <img src="./img/image/m-c-left.png" alt="" class="m-c-slide__img">
               <p class="m-c-slide__text">
-                <span class='slide-num'>1500</span> <span class="slide-bold">тонн</span><br />
+                <span class='slide-num'>1502</span> <span class="slide-bold">тонн</span><br />
                 металлопроката всегда в наличии
               </p>
               <img src="./img/image/m-c-right.png" alt="" class="m-c-slide__img">
@@ -118,7 +118,7 @@
             <div class="m-c-slide__content">
               <img src="./img/image/m-c-left.png" alt="" class="m-c-slide__img">
               <p class="m-c-slide__text">
-                <span class='slide-num'>1500</span> <span class="slide-bold">тонн</span><br />
+                <span class='slide-num'>1503</span> <span class="slide-bold">тонн</span><br />
                 металлопроката всегда в наличии
               </p>
               <img src="./img/image/m-c-right.png" alt="" class="m-c-slide__img">
@@ -126,8 +126,8 @@
           </a>
         </div>
       </div>
-      <img class='m-c__arrow m-c__left' src="./img/control/m-c-left.svg" alt="<">
-      <img class='m-c__arrow m-c__right' src="./img/control/m-c-right.svg" alt=">">
+      <img id='mainCarouselLeft' class='m-c__arrow m-c__left' src="./img/control/m-c-left.svg" alt="<">
+      <img id='mainCarouselRight' class='m-c__arrow m-c__right' src="./img/control/m-c-right.svg" alt=">">
 
     </div>
     <!--main-carousel-->
@@ -418,9 +418,9 @@
                         SALE
                       </div>
 
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -446,9 +446,9 @@
                         SALE
                       </div>
 
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -474,9 +474,9 @@
                         SALE
                       </div>
 
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -502,9 +502,9 @@
                         SALE
                       </div>
 
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -530,9 +530,9 @@
                         SALE
                       </div>
 
-                      <a href="#!" class="product-card__btn dark-btn">
+                      <button class="product-card__btn dark-btn">
                         Заказать
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
@@ -541,7 +541,7 @@
               </div>
 
               <div class="products__btn right-edge">
-                <a href="#!" class="light-btn">Посмотреть все</a>
+                <a href="stock.html" class="light-btn">Посмотреть все</a>
               </div>
 
             </div>
@@ -636,7 +636,26 @@
                 <h3 class='faq-form__title'>Задайте ваш вопрос</h3>
                 <div class="faq-form__body">
                   <input class="faq-form__input" type="text" placeholder="Что вас интересует?">
-                  <input class="light-btn faq-form__submit" type="submit" value="Отправить">
+                  <button id='faqFormBtn' class="light-btn faq-form__btn">Отправить</button>
+                </div>
+
+                <div id='faqModal' class="faq-modal__wrap">
+                  <div class="faq-modal__content modal modal--is-show">
+                    <div class="close">
+                      <span class="close__word close-faq-btn">
+                        Закрыть
+                      </span>
+                      <img src="./img/control/close-modal.svg" alt="" class="close__icon close-faq-btn">
+                    </div>
+                    <div class="modal__content">
+                      <h4 class="modal__title">Почти готово!</h4>
+                      <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
+                      <div class='modal__form' action="" method="POST">
+                        <input class="modal__input" type="text" placeholder="Ваша почта">
+                        <input class="modal__submit light-btn" type="submit" value="Отправить">
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </form>
 
@@ -1536,29 +1555,14 @@
     <!--modal-windows-->
     <div id="shading" class='shading'>
       <!--faq group-->
-      <div class="faq-modal modal">
-        <div class="close">
-          <span class="close__word">
-            Закрыть
-          </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
-        </div>
-        <div class="modal__content">
-          <h4 class="modal__title">Почти готово!</h4>
-          <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
-          <form class='modal__form' action="" method="POST">
-            <input class="modal__input" type="text" placeholder="Ваша почта">
-            <input class="modal__submit light-btn" type="submit" value="Отправить">
-          </form>
-        </div>
-      </div>
+
 
       <div class="faq-modal modal">
         <div class="close">
-          <span class="close__word">
+          <span class="close__word close-btn">
             Закрыть
           </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
+          <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
         <div class="modal__content modal-thanks ">
           <img class='modal-thanks__icon' src="./img/icon/success-icon.svg" alt="">
@@ -1582,7 +1586,7 @@
         </div>
         <div class="modal__content">
           <h4 class="modal__title">Почти готово!</h4>
-          <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
+          <p class="modal__desc">Укажите ваш номер телефона для связи с нами </p>
           <form class='modal__form' action="" method="POST">
             <input class="modal__input" type="text" placeholder="+7 000-000-00-00">
             <input class="modal__submit light-btn" type="submit" value="Отправить">
@@ -1592,10 +1596,10 @@
 
       <div class="application-thanks modal">
         <div class="close">
-          <span class="close__word">
+          <span class="close__word close-btn">
             Закрыть
           </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
+          <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
         <div class="modal__content modal-thanks ">
           <img class='modal-thanks__icon' src="./img/icon/success-icon.svg" alt="">
@@ -1611,12 +1615,12 @@
       <!--Заявка группа-->
 
       <!--заказ-->
-      <div class="order-modal modal">
+      <div id='order' class="order-modal modal">
         <div class="close">
-          <span class="close__word">
+          <span class="close__word close-btn">
             Закрыть
           </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
+          <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
         <div class="modal__content">
           <h4 class="modal__title">Ваш заказ!</h4>

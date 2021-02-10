@@ -270,6 +270,8 @@ li {
   color: #1d295d;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
+  outline: none;
+  cursor: pointer;
 }
 
 .light-btn:hover {
@@ -295,6 +297,8 @@ li {
           box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
+  outline: none;
+  cursor: pointer;
 }
 
 .dark-btn:hover {
@@ -693,14 +697,15 @@ li {
   overflow: hidden;
 }
 
-.m-c_slides {
+.m-c__slides {
   position: absolute;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-transition: 0.2 ease-in-out;
-  transition: 0.2 ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .m-c-slide {
@@ -1165,13 +1170,28 @@ li {
   color: #808080;
 }
 
-.faq-form__submit {
+.faq-form__btn {
   height: 50px;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 200px;
           flex: 0 0 200px;
   outline: none;
   border: none;
+}
+
+.faq-modal__wrap {
+  position: fixed;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  background: rgba(0, 0, 0, 0.801);
+  overflow-y: auto;
+  z-index: 100;
 }
 
 .reviews {
@@ -1598,6 +1618,7 @@ li {
   width: 100%;
   height: 1000px;
   background: rgba(0, 0, 0, 0.801);
+  overflow-y: auto;
 }
 
 .shading--is-show {
@@ -2055,7 +2076,17 @@ li {
 }
 
 .map {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contact__map {
   position: relative;
+  z-index: 100;
+  width: 407px;
+  height: 300px;
+  border: 2px solid #9dcefc;
 }
 
 .map__img {
