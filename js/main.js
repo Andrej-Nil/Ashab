@@ -1,11 +1,35 @@
 "use strict";
 const body = document.querySelector('body');
 
-//Карусели
+const mainBg = document.querySelector('.main-bg');
+const footer = document.querySelector('.footer');
+//обертка для кнопки ввер up-btn
+const up = document.querySelector('#up');
+//кнопкa ввер up-btn
+const upBtn = document.querySelector('#upBtn');
+
 const sensitivity = 20; // кол пикселей для регистрации движения
 let touchStart = null; // начало движение по сенсеру
 let touchPosition = null; // растояние пройденое по сенсеру
 
+// Добовлям фунцию для смены позиции mainBg
+window.addEventListener('scroll', changePosition);
+// Добовлям фунцию для отображекния эл.
+// с кнопкой upBtn
+window.addEventListener('scroll', showUp)
+
+// Добовлям фунцию для прокрутки сраницы вверх
+upBtn.addEventListener('click', goUp);
+let timeOut;
+function goUp() {
+  let top = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+  if (top > 0) {
+    window.scrollBy(0, -150);
+    timeOut = setTimeout('goUp()', 5);
+  } else clearTimeout(timeOut);
+}
+
+//Карусели
 // начало Главная карусель
 if (document.querySelector('#mainCarousel')) {
   const mainCarousel = document.querySelector('#mainCarousel');
@@ -229,4 +253,29 @@ if (yandexmap) {
 //возвращает ширину елемента
 function getWidthEl(el) {
   return el.clientWidth;
+}
+
+// функия смены свойство position  mainBg
+function changePosition() {
+  const mainBgCoord = mainBg.getBoundingClientRect();
+  const footerCoord = footer.getBoundingClientRect();
+  // Взависимости от условия 
+  if (footerCoord.y <= mainBgCoord.height) {
+    // позиция absolute для прижития bg  к футеру
+    mainBg.classList.add('main-bg--absolute');
+  } else {
+    // позиция fixed для прижития bg к top экрана
+    mainBg.classList.remove('main-bg--absolute');
+  }
+}
+
+// Показывает скрывает кнопку эл
+// Взависимости от прокрутки страницы
+function showUp() {
+  const coord = body.getBoundingClientRect()
+  if (coord.top < -1000) {
+    up.classList.add('up--is-show')
+  } else {
+    up.classList.remove('up--is-show')
+  }
 }
