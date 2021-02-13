@@ -514,6 +514,22 @@ li {
   width: 30px;
 }
 
+.error {
+  display: none;
+}
+
+.success {
+  display: none;
+}
+
+.error--is-show {
+  display: block;
+}
+
+.success--is-show {
+  display: block;
+}
+
 .slider__item {
   margin-bottom: 12px;
 }
@@ -1138,6 +1154,11 @@ li {
   display: flex;
 }
 
+.faq-form__error {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 .faq-form__input {
   height: 50px;
   width: 100%;
@@ -1380,9 +1401,6 @@ li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin-left: auto;
 }
 
@@ -1392,6 +1410,26 @@ li {
 
 .callback-form {
   width: 462px;
+}
+
+.f__error {
+  margin-bottom: 10px;
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 95.2%;
+  color: #fdaeae;
+}
+
+.f__success {
+  margin-bottom: 10px;
+  font-family: "Avenir", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 95.2%;
+  color: #ffffff;
 }
 
 .callback-form__input-wrap {
@@ -1752,7 +1790,12 @@ li {
   margin-bottom: 33px;
 }
 
-.modal__form {
+.modal__error {
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+.modal__inputs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,16 +1,37 @@
 "use strict";
 const body = document.querySelector('body');
 
+const mainCarousel = document.querySelector('#mainCarousel');
 const mainBg = document.querySelector('.main-bg');
 const footer = document.querySelector('.footer');
 //обертка для кнопки ввер up-btn
 const up = document.querySelector('#up');
 //кнопкa ввер up-btn
 const upBtn = document.querySelector('#upBtn');
+const forms = document.querySelectorAll('.form');
+
+const bgModal = document.querySelector('#shading'); // темный фон окон
+const faqModal = document.querySelector('#faqModal'); // темный фон faqModalBg
+const closeFaqBtns = document.querySelectorAll('.close-faq-btn');
+const application = document.querySelector('#application'); // Онлайн заявка(btn)
+const applicationModal = document.querySelector('#applicationModal');// онлайн заявка(окно)
+const applicationThanks = document.querySelector('#applicationThanks');// успех(окно)
+const order = document.querySelector('#order') // заказ(окно)
+
+const orderForm = order.querySelector('#orderForm');
+const orderCountInput = orderForm.querySelector('#orderCount');
+const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
+const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
+const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
+
+const callbackForm = document.querySelector('#callbackForm');
 
 const sensitivity = 20; // кол пикселей для регистрации движения
 let touchStart = null; // начало движение по сенсеру
 let touchPosition = null; // растояние пройденое по сенсеру
+
+const regTel = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/;// проверка телефона
+const regMail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;// Проверка на емаил
 
 // Добовлям фунцию для смены позиции mainBg
 window.addEventListener('scroll', changePosition);
@@ -29,10 +50,29 @@ function goUp() {
   } else clearTimeout(timeOut);
 }
 
+// Добовляем функции для проверки form
+Array.from(forms).forEach((form) => {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formCheck(form);
+  });
+});
+
+orderForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  orderFormCheck()
+})
+
+orderCountInput.addEventListener('input', () => {
+  setValueCountInput(1)
+});
+
+
+
 //Карусели
 // начало Главная карусель
-if (document.querySelector('#mainCarousel')) {
-  const mainCarousel = document.querySelector('#mainCarousel');
+if (mainCarousel) {
+
   const mainCarouselSlidesWrap = mainCarousel.querySelector('#mainCarouselSlidesWrap');
   const mainCarouselSlides = mainCarousel.querySelectorAll('.m-c-slide');
   const totalSlides = mainCarouselSlides.length;
@@ -81,11 +121,10 @@ if (document.querySelector('#mainCarousel')) {
     mainCarouselSlidesWrap.style.left = (parseInt(mainCarouselSlidesWrap.style.left, 10)
       + step) + 'px';
     MainCarousel--;
-    clearInterval(test);
   }
 
   //автолистание
-  let test = setInterval(mainCarouselNextSlide, 10000)
+  setInterval(mainCarouselNextSlide, 10000)
 }
 //конец Главная карусель
 
@@ -114,16 +153,6 @@ function touchEnd(next, prev) {
 
 
 //Открытие и закрытие модульных окон
-const bgModal = document.querySelector('#shading'); // темный фон окон
-const faqModal = document.querySelector('#faqModal'); // темный фон faqModalBg
-const closeFaqBtns = document.querySelectorAll('.close-faq-btn');
-const application = document.querySelector('#application'); // Онлайн заявка(btn)
-const applicationModal = document.querySelector('#applicationModal');// онлайн заявка(окно)
-const order = document.querySelector('#order') // заказ(окно)
-const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
-const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
-const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
-
 
 //Устанавливает высоту bgModal
 setBgModalHeight(bgModal);
@@ -163,8 +192,7 @@ if (faqModal) {
   })
 }
 
-
-
+// добовляем фунцию закрытия окна faq
 Array.from(closeFaqBtns).forEach((el) => {
   el.addEventListener('click', () => { closeFaqModal() });
 });
@@ -178,6 +206,15 @@ function setBgModalHeight(idbgModal) {
 
 //Функция открытия модульного faq
 function showFaqModal() {
+  const questInput = faqForm.querySelector('#questInput');
+  const faqFormError = faqForm.querySelector('#faqFormError');
+  const value = questInput.value.trim();
+  faqFormError.classList.remove('error--is-show');
+  if (!value) {
+    faqFormError.classList.add('error--is-show');
+    questInput.value = '';
+    return;
+  }
   faqModal.classList.add('modal--is-show')
 }
 //Функция закрытия модульного faq
@@ -201,7 +238,7 @@ function closeModal(el) {
 }
 
 
-
+//Добовляем функцию открывае/закрывае выподающих эл
 document.onclick = function (e) {
   let el = e.target;
   if (el.closest('.press-to-show')) {
@@ -209,6 +246,7 @@ document.onclick = function (e) {
   }
 }
 
+// Открываем/закрываем выподоющие эл
 function slow(el) {
   let parent = el.closest('.parent-hiddne-el')
   let hiddenEl = parent.querySelector('.hidden');
@@ -217,20 +255,200 @@ function slow(el) {
   arrow.classList.toggle('arrow-up');
 }
 
+// Валидация форм
+//Устанавливает заданное число при
+// условии если введеное число меньше или NaN
+function setValueCountInput(value) {
+  const inputValue = +orderCountInput.value;
+  if (inputValue < 1 || isNaN(inputValue)) {
+    orderCountInput.value = value;
+  }
+}
+
+//Проверка форм
+function formCheck(form) {
+  // Очещаем ошибки
+  hideErrorMessages(form);
+  // проверка значение инпутов
+  InputsCheck(form);
+}
+
+function orderFormCheck() {
+  hideErrorMessages(orderForm);
+  orderInputsCheck();
+}
+
+function orderInputsCheck() {
+  const mailOrTel = orderForm.querySelector('#mailOrTel');
+  const orderFormInputs = orderForm.querySelectorAll('.input');
+  const errorMail = orderForm.querySelector('#errorMail');
+  const errorTel = orderForm.querySelector('#errorTel');
+  const inputMail = orderForm.querySelector('#inputMail');
+  const inputTel = orderForm.querySelector('#inputTel');
+  const mailValue = inputMail.value.trim();
+  const telValue = inputTel.value.trim();
+  const resCheckMail = regexСheck(mailValue, regMail);
+  const resCheckTel = regexСheck(telValue, regTel);
+  let resCheck = true;
+  if (!resCheckMail) {
+    if (mailValue) {
+      errorMail.classList.add('error--is-show');
+      resCheck = false
+    }
+  }
+
+  if (!resCheckTel) {
+    if (telValue) {
+      errorTel.classList.add('error--is-show');
+      resCheck = false
+    }
+  }
+
+  if (!(mailValue || telValue)) {
+    mailOrTel.classList.add('error--is-show');
+    resCheck = false
+  }
+
+  if (resCheck) {
+    clearInputs(orderFormInputs);
+    order.classList.remove('modal--is-show');
+    applicationThanks.classList.add('modal--is-show');
+  }
+}
+
+//Проверка инпутов
+function InputsCheck(form) {
+  const inputs = form.querySelectorAll('.input');
+  console.log(inputs)
+  // Если есть пустое поле выдаем ошибку, останавливаем проверку
+  if (isEmptyValue(inputs, form)) {
+    return;
+  }
+
+  const success = isValidValue(inputs, form);
+  // Если проверка успешна, то вывести сообщение о успехе и очистить инпуты
+  if (success) {
+    if (form.id === "callbackForm") {
+      const successMessage = form.querySelector('.success');
+      successMessage.classList.add('success--is-show');
+      clearInputs(inputs);
+      return;
+    }
+
+    if (form.id === "applicationForm") {
+      const applicationThanks = bgModal.querySelector('#applicationThanks');
+      applicationThanks.classList.add('modal--is-show');
+      applicationModal.classList.remove('modal--is-show')
+      console.log(applicationThanks)
+      clearInputs(inputs);
+      return;
+    }
+
+    if (form.id === "faqForm") {
+      const faqThanks = bgModal.querySelector('#faqThanks');
+      bgModal.classList.add('shading--is-show');
+      faqThanks.classList.add('modal--is-show');
+      faqModal.classList.remove('modal--is-show')
+      console.log(applicationThanks)
+      clearInputs(inputs);
+      return;
+    }
+
+  }
+}
+
+
+// Провекрка на пустое значение инпута
+function isEmptyValue(inputs, form) {
+  const emptyError = form.querySelector('.empty');
+  console.log(emptyError)
+  let isEmpty = false;
+  Array.from(inputs).forEach((el) => {
+    if (!el.value.trim()) {
+      emptyError.classList.add('error--is-show');
+      isEmpty = true;
+    }
+  })
+  return isEmpty;
+}
+
+// Возвращает резулитат проверки
+function isValidValue(inputs, form) {
+
+  return valueCheck(inputs, form);
+}
+
+
+// Пролверка на регулярным выражением
+function regexСheck(value, reg) {
+  return reg.test(value)
+}
+
+// Прячем сообщения с ошибками
+function hideErrorMessages(form) {
+  const successMessage = form.querySelector('.success');
+  const errorMessage = form.querySelectorAll('.error');
+  if (form.id === 'callbackForm') {
+    successMessage.classList.remove('success--is-show');
+  }
+
+  Array.from(errorMessage).forEach((el) => {
+    el.classList.remove('error--is-show');
+  })
+}
+
+
+//Проверка занчение, если все значение прошли проверку
+// Возвращает true иначи false
+function valueCheck(inputs, form) {
+  const phoneEroor = form.querySelector('.phone');
+  const mailEroor = form.querySelector('.mail');
+  let isSuccess = true;
+  Array.from(inputs).forEach((el) => {
+    const dataType = el.getAttribute('data-type');
+    switch (dataType) {
+      case 'tel': {
+        const value = el.value;
+        isSuccess = isSuccess && regexСheck(value, regTel);
+        if (!isSuccess) {
+          phoneEroor.classList.add('error--is-show');
+        }
+        break;
+      };
+      case 'email': {
+        const value = el.value;
+        isSuccess = isSuccess && regexСheck(value, regMail);
+        if (!isSuccess) {
+          mailEroor.classList.add('error--is-show');
+        }
+        break;
+      };
+      default: isSuccess = true;
+    }
+  })
+
+  return isSuccess;
+}
+
+//Очищаем инпуты
+function clearInputs(inputs) {
+  Array.from(inputs).forEach((el) => {
+    el.value = '';
+  })
+}
+
 
 // яндеск карта
-
-// блок отображающий карту
-const yandexmap = document.querySelector('#yandexmap');
+const yandexmap = document.querySelector('#yandexmap'); // блок отображающий карту
 if (yandexmap) {
   let map;
   let marker;
   // Координаты
   // Для изменение координат, необходимо 
-  // записать новst значенить в атребуте 
+  // записать новое значенить в атребуте 
   // "data-coord" в блоке id='yandexmap'
   // певое значение ширина, второе долгота
-  // через запитею
+  // через запятую
   const dataCoord = yandexmap.getAttribute('data-coord')
   const coordinates = dataCoord.split(',');
 
@@ -247,8 +465,6 @@ if (yandexmap) {
   }
   ymaps.ready(initMap);
 }
-
-
 
 //возвращает ширину елемента
 function getWidthEl(el) {

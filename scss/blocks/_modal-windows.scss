@@ -79,7 +79,12 @@
   margin-bottom: 33px;
 }
 
-.modal__form {
+.modal__error {
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+.modal__inputs {
   display: flex;
 }
 

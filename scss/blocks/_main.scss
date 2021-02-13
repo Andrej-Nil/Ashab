@@ -349,3 +349,19 @@ li {
   height: 30px;
   width: 30px;
 }
+
+.error {
+  display: none;
+}
+
+.success {
+  display: none;
+}
+
+.error--is-show {
+  display: block;
+}
+
+.success--is-show {
+  display: block;
+}

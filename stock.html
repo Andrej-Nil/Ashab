@@ -1052,15 +1052,19 @@
           </div>
         </nav>
         <div class="f-content">
-          <form action="" method="POST" class="f__form callback-form">
+          <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
             <h4 class='f__title h4'>
               Обратная связь
             </h4>
+            <p class="f__error error empty">Заполните все поля</p>
+            <p class="f__error error phone">Неправильно указан номер</p>
+            <p class="f__error error mail">Неправильна указана почта</p>
+            <p class="f__success success ">Данные успешно отправлены</p>
             <div class="callback-form__input-wrap">
-              <input class="callback-form__input" type="text" placeholder="Ваше имя">
-              <input class="callback-form__input" type="text" placeholder="Ваш телефон">
-              <input class="callback-form__input" type="text" placeholder="Ваша почта">
-              <input class="callback-form__submit light-btn" type="submit" value="Оставить заявку">
+              <input class="callback-form__input input" type="text" placeholder="Ваше имя">
+              <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
+              <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
+              <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
             </div>
           </form>
 
@@ -1139,8 +1143,10 @@
         <div class="modal__content">
           <h4 class="modal__title">Почти готово!</h4>
           <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
-          <form class='modal__form' action="" method="POST">
-            <input class="modal__input" type="text" placeholder="+7 000-000-00-00">
+          <p class="f__error error empty">Заполните все поля</p>
+          <p class="f__error error phone">Неправильно указан номер</p>
+          <form class='modal__form form' action="" method="POST">
+            <input class="modal__input" data-type="tel" type="text" placeholder="+7 000-000-00-00">
             <input class="modal__submit light-btn" type="submit" value="Отправить">
           </form>
         </div>

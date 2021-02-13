@@ -634,10 +634,12 @@
 
               </div>
 
-              <form action="" method="POST" class="faq-form">
+              <form id='faqForm' action="" method="POST" class="faq-form form">
+
                 <h3 class='faq-form__title'>Задайте ваш вопрос</h3>
+                <p id='faqFormError' class="faq-form__error error">Заполните поле</p>
                 <div class="faq-form__body">
-                  <input class="faq-form__input" type="text" placeholder="Что вас интересует?">
+                  <input id='questInput' class="faq-form__input input" type="text" placeholder="Что вас интересует?">
                   <button id='faqFormBtn' class="light-btn faq-form__btn">Отправить</button>
                 </div>
 
@@ -653,14 +655,20 @@
                       <h4 class="modal__title">Почти готово!</h4>
                       <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
                       <div class='modal__form' action="" method="POST">
-                        <input class="modal__input" type="text" placeholder="Ваша почта">
-                        <input class="modal__submit light-btn" type="submit" value="Отправить">
+                        <div class="modal__message">
+                          <p class="modal__error error empty">Заполните поле</p>
+                          <p class="modal__error error mail">Неправильно указанa номер почта</p>
+                        </div>
+                        <div class="modal__inputs">
+                          <input class="modal__input input" data-type='email' type="text" placeholder="Ваша почта">
+                          <input class="modal__submit light-btn" type="submit" value="Отправить">
+                        </div>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </form>
-
             </div>
             <!--faq-->
 
@@ -1505,15 +1513,19 @@
           </div>
         </nav>
         <div class="f-content">
-          <form action="" method="POST" class="f__form callback-form">
+          <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
             <h4 class='f__title h4'>
               Обратная связь
             </h4>
+            <p class="f__error error empty">Заполните все поля</p>
+            <p class="f__error error phone">Неправильно указан номер</p>
+            <p class="f__error error mail">Неправильна указана почта</p>
+            <p class="f__success success ">Данные успешно отправлены</p>
             <div class="callback-form__input-wrap">
-              <input class="callback-form__input" type="text" placeholder="Ваше имя">
-              <input class="callback-form__input" type="text" placeholder="Ваш телефон">
-              <input class="callback-form__input" type="text" placeholder="Ваша почта">
-              <input class="callback-form__submit light-btn" type="submit" value="Оставить заявку">
+              <input class="callback-form__input input" type="text" placeholder="Ваше имя">
+              <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
+              <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
+              <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
             </div>
           </form>
 
@@ -1565,19 +1577,20 @@
       <!--faq group-->
 
 
-      <div class="faq-modal modal">
+      <div id='faqThanks' class="faq-modal modal">
         <div class="close">
           <span class="close__word close-btn">
             Закрыть
           </span>
           <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
+
         <div class="modal__content modal-thanks ">
           <img class='modal-thanks__icon' src="./img/icon/success-icon.svg" alt="">
           <div class="modal-thanks__text">
             <h4 class="modal__title">Спасибо!</h4>
             <p class='modal-thanks__deck'>
-              Ваша ворос отправлена<br />
+              Ваша ворос отправлен<br />
               Скоро мы ответим вам на почту</p>
           </div>
         </div>
@@ -1594,15 +1607,23 @@
         </div>
         <div class="modal__content">
           <h4 class="modal__title">Почти готово!</h4>
-          <p class="modal__desc">Укажите ваш номер телефона для связи с нами </p>
-          <form class='modal__form' action="" method="POST">
-            <input class="modal__input" type="text" placeholder="+7 000-000-00-00">
-            <input class="modal__submit light-btn" type="submit" value="Отправить">
+          <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
+
+          <form id='applicationForm' class='modal__form form' action="" method="POST">
+            <div class="modal__message">
+              <p class="modal__error error empty">Заполните поле</p>
+              <p class="modal__error error phone">Неправильно указан номер</p>
+            </div>
+            <div class="modal__inputs">
+              <input class="modal__input input" data-type="tel" type="text" placeholder="+7 000-000-00-00">
+              <input class="modal__submit light-btn" type="submit" value="Отправить">
+            </div>
+
           </form>
         </div>
       </div>
 
-      <div class="application-thanks modal">
+      <div id='applicationThanks' class="application-thanks modal">
         <div class="close">
           <span class="close__word close-btn">
             Закрыть
@@ -1619,7 +1640,6 @@
           </div>
         </div>
       </div>
-
       <!--Заявка группа-->
 
       <!--заказ-->
@@ -1633,17 +1653,22 @@
         <div class="modal__content">
           <h4 class="modal__title">Ваш заказ!</h4>
           <p class="modal__desc">Укажите количество товара, контактный телефон или почту</p>
-          <form class='order-modal__form' action="" method="POST">
+          <form id='orderForm' class='order-modal__form' action="" method="POST">
             <div class="order-modal__item">
               <img src="./img/image/section-img.jpg" alt="" class="order-modal__img">
               <div class="order-modal__desc">
                 Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ 8734
               </div>
             </div>
-            <input class="modal__input order-modal__input" type="text" placeholder="Ваша почта">
-            <input class="modal__input order-modal__input" type="text" placeholder="+7 000-000-00-00">
+            <p id="mailOrTel" class="modal__error error">Укажите почту или номер</p>
+            <p id="errorMail" class="modal__error error mail">Неправильна указана почта</p>
+            <input id='inputMail' class="modal__input order-modal__input input" data-type="email" type="text"
+              placeholder="Ваша почта">
+            <p id="errorTel" class="modal__error error phone">Неправильно указан номер</p>
+            <input id='inputTel' class="modal__input order-modal__input input" data-type="tel" type="text"
+              placeholder="+7 000-000-00-00">
             <div class="counter">
-              <input type="text" class="modal__input counter__input" placeholder="Количество">
+              <input id='orderCount' type="text" class="modal__input counter__input" value='1' placeholder="Количество">
               <div class="counter__btn">
                 <img src="./img/control/counter-inc.svg" alt="" class="counter__btn-img">
 
