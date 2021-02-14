@@ -942,13 +942,15 @@
               </a>
             </li>
           </ul>
+
+          <div class="f-login">
+            <span class="f-login__btn">
+              Авторизация
+            </span>
+          </div>
         </nav>
 
-        <div class="f-login">
-          <span class="f-login__btn">
-            Авторизация
-          </span>
-        </div>
+
         <div class="f-content">
           <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
             <h4 class='f__title h4'>
@@ -1012,25 +1014,6 @@
     <!--modal-windows-->
     <div id="shading" class='shading'>
 
-      <div class="faq-modal modal">
-        <div class="close">
-          <span class="close__word">
-            Закрыть
-          </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
-        </div>
-        <div class="modal__content modal-thanks ">
-          <img class='modal-thanks__icon' src="./img/icon/success-icon.svg" alt="">
-          <div class="modal-thanks__text">
-            <h4 class="modal__title">Спасибо!</h4>
-            <p class='modal-thanks__deck'>
-              Ваша ворос отправлена<br />
-              Скоро мы ответим вам на почту</p>
-          </div>
-        </div>
-      </div>
-      <!--faq group-->
-
       <!--Заявка группа-->
       <div id='applicationModal' class="application-modal modal">
         <div class="close">
@@ -1042,19 +1025,27 @@
         <div class="modal__content">
           <h4 class="modal__title">Почти готово!</h4>
           <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
-          <form class='modal__form' action="" method="POST">
-            <input class="modal__input" type="text" placeholder="+7 000-000-00-00">
-            <input class="modal__submit light-btn" type="submit" value="Отправить">
+
+          <form id='applicationForm' class='modal__form form' action="" method="POST">
+            <div class="modal__message">
+              <p class="modal__error error empty">Заполните поле</p>
+              <p class="modal__error error phone">Неправильно указан номер</p>
+            </div>
+            <div class="modal__inputs">
+              <input class="modal__input input" data-type="tel" type="text" placeholder="+7 000-000-00-00">
+              <input class="modal__submit light-btn" type="submit" value="Отправить">
+            </div>
+
           </form>
         </div>
       </div>
 
-      <div class="application-thanks modal">
+      <div id='applicationThanks' class="application-thanks modal">
         <div class="close">
-          <span class="close__word">
+          <span class="close__word close-btn">
             Закрыть
           </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
+          <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
         <div class="modal__content modal-thanks ">
           <img class='modal-thanks__icon' src="./img/icon/success-icon.svg" alt="">
@@ -1066,7 +1057,6 @@
           </div>
         </div>
       </div>
-
       <!--Заявка группа-->
 
     </div>

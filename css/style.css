@@ -1711,6 +1711,7 @@ li {
   height: 1000px;
   background: rgba(0, 0, 0, 0.801);
   overflow-y: auto;
+  z-index: 1000;
 }
 
 .shading--is-show {
@@ -1730,7 +1731,7 @@ li {
   width: 700px;
   background: #ffffff;
   min-height: 300px;
-  padding: 0 55px;
+  padding: 73px 55px 55px 55px;
   -webkit-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
 }
@@ -2072,7 +2073,6 @@ li {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  margin-bottom: 55px;
 }
 
 .order-modal__total-price {

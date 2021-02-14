@@ -1668,19 +1668,20 @@
             <input id='inputTel' class="modal__input order-modal__input input" data-type="tel" type="text"
               placeholder="+7 000-000-00-00">
             <div class="counter">
-              <input id='orderCount' type="text" class="modal__input counter__input" value='1' placeholder="Количество">
-              <div class="counter__btn">
+              <input id='orderQuantity' type="text" class="modal__input counter__input" value='1'
+                placeholder="Количество">
+              <div id='incQuantity' class="counter__btn">
                 <img src="./img/control/counter-inc.svg" alt="" class="counter__btn-img">
 
               </div>
-              <div class="counter__btn">
+              <div id='decQuantity' class="counter__btn">
                 <img src="./img/control/counter-dec.svg" alt="" class="counter__btn-img">
               </div>
             </div>
             <div class="order-modal__buy">
               <p class="order-modal__total-price">
                 Общая стоимость:
-                <span class="order-modal__price">65 000</span>
+                <span id='orderPrice' data-price="65000" class="order-modal__price">65 000</span>
               </p>
               <input class="order-modal__submit modal__submit light-btn" type="submit" value="Отправить">
             </div>

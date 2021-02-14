@@ -18,10 +18,15 @@ const applicationModal = document.querySelector('#applicationModal');// онла
 const applicationThanks = document.querySelector('#applicationThanks');// успех(окно)
 const order = document.querySelector('#order') // заказ(окно)
 
-const orderForm = order.querySelector('#orderForm');
-const orderCountInput = orderForm.querySelector('#orderCount');
+const orderForm = document.querySelector('#orderForm');
+const orderQuantityInput = document.querySelector('#orderQuantity');
+const incQuantityBtn = document.querySelector('#incQuantity');
+const decQuantityBtn = document.querySelector('#decQuantity');
+const orderPrice = document.querySelector('#orderPrice');
 const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
 const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
+
+
 const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
 
 const callbackForm = document.querySelector('#callbackForm');
@@ -58,15 +63,24 @@ Array.from(forms).forEach((form) => {
   });
 });
 
-orderForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  orderFormCheck()
-})
 
-orderCountInput.addEventListener('input', () => {
-  setValueCountInput(1)
-});
 
+if (order) {
+  //Добовляем функции для проверки формы
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    orderFormCheck()
+  })
+
+  //Добовляем функцию для окраничение ввода в поле количесво товоров
+  orderQuantityInput.addEventListener('input', () => {
+    setValueCountInput(1)
+  });
+
+  //Добовляем функцию для увеличение и уменьшения кол т оваров
+  incQuantity.addEventListener('click', increase);
+  decQuantity.addEventListener('click', decrease);
+}
 
 
 //Карусели
@@ -159,8 +173,14 @@ setBgModalHeight(bgModal);
 
 window.addEventListener(`resize`, () => {
   setBgModalHeight(bgModal);
-  setBgModalHeight(faqModal);
 }, false);
+
+if (faqModal) {
+  window.addEventListener(`resize`, () => {
+    setBgModalHeight(faqModal);
+  }, false);
+}
+
 
 // добовляем фунцию отктрытия окна онлайн заявки
 application.addEventListener('click', () => {
@@ -259,9 +279,9 @@ function slow(el) {
 //Устанавливает заданное число при
 // условии если введеное число меньше или NaN
 function setValueCountInput(value) {
-  const inputValue = +orderCountInput.value;
+  const inputValue = +orderQuantityInput.value;
   if (inputValue < 1 || isNaN(inputValue)) {
-    orderCountInput.value = value;
+    orderQuantityInput.value = value;
   }
 }
 
@@ -494,4 +514,30 @@ function showUp() {
   } else {
     up.classList.remove('up--is-show')
   }
+}
+
+
+// увеличевает количество товаров и вываит итоговую цену
+function increase() {
+  const price = +orderPrice.getAttribute('data-price');
+  const quantity = +orderQuantityInput.value + 1;
+  orderQuantityInput.value = quantity;
+  orderPrice.innerHTML = totalPrice(price, quantity).toLocaleString();
+}
+// уменьшает количество товаров и вываит итоговую цену
+function decrease() {
+  const price = +orderPrice.getAttribute('data-price');
+  const quantity = +orderQuantityInput.value - 1;
+  orderQuantityInput.value = quantity;
+  if (orderQuantityInput.value < 1) {
+    setValueCountInput(1);
+    return;
+  }
+
+  orderPrice.innerHTML = totalPrice(price, quantity).toLocaleString();
+}
+
+//умножает в возвращает результат
+function totalPrice(numA, numB) {
+  return numA * numB;
 }

@@ -1260,19 +1260,27 @@
         <div class="modal__content">
           <h4 class="modal__title">Почти готово!</h4>
           <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
-          <form class='modal__form' action="" method="POST">
-            <input class="modal__input" type="text" placeholder="+7 000-000-00-00">
-            <input class="modal__submit light-btn" type="submit" value="Отправить">
+
+          <form id='applicationForm' class='modal__form form' action="" method="POST">
+            <div class="modal__message">
+              <p class="modal__error error empty">Заполните поле</p>
+              <p class="modal__error error phone">Неправильно указан номер</p>
+            </div>
+            <div class="modal__inputs">
+              <input class="modal__input input" data-type="tel" type="text" placeholder="+7 000-000-00-00">
+              <input class="modal__submit light-btn" type="submit" value="Отправить">
+            </div>
+
           </form>
         </div>
       </div>
 
-      <div class="application-thanks modal">
+      <div id='applicationThanks' class="application-thanks modal">
         <div class="close">
-          <span class="close__word">
+          <span class="close__word close-btn">
             Закрыть
           </span>
-          <img src="./img/control/close-modal.svg" alt="" class="close__icon">
+          <img src="./img/control/close-modal.svg" alt="" class="close__icon close-btn">
         </div>
         <div class="modal__content modal-thanks ">
           <img class='modal-thanks__icon' src="./img/icon/success-icon.svg" alt="">
@@ -1284,7 +1292,6 @@
           </div>
         </div>
       </div>
-
       <!--Заявка группа-->
 
       <!--заказ-->
@@ -1298,29 +1305,35 @@
         <div class="modal__content">
           <h4 class="modal__title">Ваш заказ!</h4>
           <p class="modal__desc">Укажите количество товара, контактный телефон или почту</p>
-          <form class='order-modal__form' action="" method="POST">
+          <form id='orderForm' class='order-modal__form' action="" method="POST">
             <div class="order-modal__item">
               <img src="./img/image/section-img.jpg" alt="" class="order-modal__img">
               <div class="order-modal__desc">
                 Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ 8734
               </div>
             </div>
-            <input class="modal__input order-modal__input" type="text" placeholder="Ваша почта">
-            <input class="modal__input order-modal__input" type="text" placeholder="+7 000-000-00-00">
+            <p id="mailOrTel" class="modal__error error">Укажите почту или номер</p>
+            <p id="errorMail" class="modal__error error mail">Неправильна указана почта</p>
+            <input id='inputMail' class="modal__input order-modal__input input" data-type="email" type="text"
+              placeholder="Ваша почта">
+            <p id="errorTel" class="modal__error error phone">Неправильно указан номер</p>
+            <input id='inputTel' class="modal__input order-modal__input input" data-type="tel" type="text"
+              placeholder="+7 000-000-00-00">
             <div class="counter">
-              <input type="text" class="modal__input counter__input" placeholder="Количество">
-              <div class="counter__btn">
+              <input id='orderQuantity' type="text" class="modal__input counter__input" value='1'
+                placeholder="Количество">
+              <div id='incQuantity' class="counter__btn">
                 <img src="./img/control/counter-inc.svg" alt="" class="counter__btn-img">
 
               </div>
-              <div class="counter__btn">
+              <div id='decQuantity' class="counter__btn">
                 <img src="./img/control/counter-dec.svg" alt="" class="counter__btn-img">
               </div>
             </div>
             <div class="order-modal__buy">
               <p class="order-modal__total-price">
                 Общая стоимость:
-                <span class="order-modal__price">65 000</span>
+                <span id='orderPrice' data-price="65000" class="order-modal__price">65 000</span>
               </p>
               <input class="order-modal__submit modal__submit light-btn" type="submit" value="Отправить">
             </div>
