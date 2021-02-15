@@ -306,6 +306,7 @@ li {
 .desc-block__sticker {
   position: absolute;
   top: 18px;
+  z-index: 1000;
 }
 
 .serch__request {

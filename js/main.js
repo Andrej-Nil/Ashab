@@ -1,7 +1,9 @@
 "use strict";
-const body = document.querySelector('body');
 
+const body = document.querySelector('body');
+const KEY_ESC = 27;
 const mainCarousel = document.querySelector('#mainCarousel');
+const slider = document.querySelector('#slider');
 const mainBg = document.querySelector('.main-bg');
 const footer = document.querySelector('.footer');
 //обертка для кнопки ввер up-btn
@@ -141,6 +143,258 @@ if (mainCarousel) {
   setInterval(mainCarouselNextSlide, 10000)
 }
 //конец Главная карусель
+
+//Начало slider
+if (slider) {
+  const slidesWrap = slider.querySelector('#slidesWrap'); // обертка слайдов
+  const slides = slider.querySelectorAll('.slider__item'); // слайды
+  //isMoving флаг для отслежевание прогресса события transitionend
+  //при управлении slidesWrap стрелками
+  let isMoving = false;
+  let idxActiveSlide = getIndexActiveEl(slides, "slider__item--is-active"); // индех активного слайда
+  const dots = slider.querySelectorAll('.slider__dot');
+
+  const fullPicSlider = slider.querySelector('#fullPic');
+  const fullPicSlides = slider.querySelectorAll('.full-pic__item');
+  const fullPicCloseBtns = slider.querySelectorAll('.full-pic__close');
+  slidesWrap.addEventListener('transitionend', movingEvent); // отслеживает окончание движение слайда
+
+  const playBtns = fullPicSlider.querySelectorAll('.full-pic__play');
+
+
+  const arrowPrev = slider.querySelector('#prevSlide'); // стрелка влево
+  const arrowNext = slider.querySelector('#nextSlide'); // стрелка вправо
+
+  const fullPicPrev = slider.querySelector('#fullPicPrev'); // стрелка влево
+  const fullPicNext = slider.querySelector('#fullPicNext'); // стрелка вправо
+
+  setCurrentSlide();
+
+  setTotalSlides();
+
+  setBgModalHeight(fullPicSlider);
+
+  window.addEventListener(`resize`, () => {
+    setBgModalHeight(fullPicSlider);
+  }, false);
+
+  arrowPrev.addEventListener('click', prevSlide);
+  arrowNext.addEventListener('click', nextSlide);
+
+  fullPicPrev.addEventListener('click', prevSlide);
+  fullPicNext.addEventListener('click', nextSlide);
+
+  slidesWrap.addEventListener('touchstart', function (e) { startTouchMove(e) });
+  // Отслеживает путь и растояние
+  slidesWrap.addEventListener('touchmove', function (e) { touchMove(e) });
+  // Окончание движение
+  slidesWrap.addEventListener('touchend', function () { touchEnd(nextSlide, prevSlide) });
+
+  // добовляем dots функцию навигации по слайдам
+  Array.from(dots).forEach((el, idx) => {
+    el.addEventListener('click', () => {
+      dotsManagement(idx)
+    })
+  });
+
+  // Добовляем функцию на аткытие полного каруели с полным изображением текущего слайда
+  Array.from(slides).forEach((el, idx) => {
+    el.addEventListener('click', () => {
+      showFullPicSlider(idx)
+    })
+  });
+  // Добовляем функцию закытие FullPicSlider
+  Array.from(fullPicCloseBtns).forEach((el) => {
+    el.addEventListener('click', closeFullPicSlider)
+  });
+
+  // Добовляем функцию закытие FullPicSlider нажатием esc
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode == KEY_ESC) {
+      closeFullPicSlider();
+    }
+  });
+
+  fullPicPrev.addEventListener('click', () => {
+    showCurrentFullPic(idxActiveSlide)
+  });
+  fullPicNext.addEventListener('click', () => {
+    showCurrentFullPic(idxActiveSlide)
+  });
+
+  // добовляем функции play
+  Array.from(playBtns).forEach((el) => {
+    el.addEventListener('click', () => {
+      playMovie(el)
+    })
+  });
+
+  Array.from(fullPicSlides).forEach((el) => {
+    const movie = el.querySelector('video');
+    if (movie) {
+      movie.addEventListener('click', () => {
+        stopMovie(movie)
+      })
+    }
+
+  });
+
+
+
+  //вывод номера текущего слайда
+  function setCurrentSlide() {
+    const currentSlide = document.querySelector('#currentSlide');
+    currentSlide.innerHTML = idxActiveSlide + 1;
+  }
+
+  //вывод общего количество слайдев
+  function setTotalSlides() {
+    const totalSlides = slider.querySelector('#totalSlide');
+    totalSlides.innerHTML = slides.length;
+  }
+
+  // проверяет наличие класса в noteList
+  // и возвращает индекс
+  function getIndexActiveEl(noteList, className) {
+    let index = 0;
+    Array.from(noteList).forEach((item, idx) => {
+      if (item.classList.contains(className)) {
+        index = idx;
+        return;
+      }
+    })
+
+
+    return index;
+  }
+
+  // устанавливает активный класс
+  function setActiveEl(noteList, idx, className) {
+    Array.from(noteList).forEach((item) => {
+      item.classList.remove(className);
+    })
+    noteList[idx].classList.add(className);
+    setCurrentSlide();
+  }
+
+  // функции навигации карусалью
+  function prevSlide() {
+
+    const stepWidth = slides[1].offsetWidth;
+    const coorSlidesWrap = slidesWrap.getBoundingClientRect();
+    const coorCarousel = slider.getBoundingClientRect();
+
+    if (coorSlidesWrap.left >= coorCarousel.left) {
+      return;
+    }
+    if (isMoving) {
+      return;
+    }
+    isMoving = true;
+    idxActiveSlide -= 1;
+    setActiveEl(slides, idxActiveSlide, "slider__item--is-active");
+    slidesWrap.style.left = (parseInt(getComputedStyle(slidesWrap)['left'], 10) + stepWidth) + 'px';
+    setActiveEl(dots, idxActiveSlide, 'slider__dot--is-activ');
+    moveDots();
+  }
+
+  function nextSlide() {
+    const stepWidth = slides[1].offsetWidth;
+
+    if (idxActiveSlide + 1 >= slides.length) {
+      return;
+    }
+    if (isMoving) {
+      return;
+    }
+    isMoving = true;
+    idxActiveSlide += 1;
+    setActiveEl(slides, idxActiveSlide, "slider__item--is-active");
+    slidesWrap.style.left = (parseInt(getComputedStyle(slidesWrap)['left'], 10) - stepWidth) + 'px';
+    setActiveEl(dots, idxActiveSlide, 'slider__dot--is-activ');
+    moveDots();
+  }
+
+  // функции навигации карусалью точками
+  function dotsManagement(idx) {
+    const stepWidth = slides[1].offsetWidth;
+    const shift = idx * stepWidth;
+    idxActiveSlide = parseInt(idx);
+
+    setActiveEl(dots, idx, 'slider__dot--is-activ');
+    setActiveEl(slides, idx, "slider__item--is-active");
+    slidesWrap.style.left = -shift + 'px';
+    moveDots();
+  }
+
+  // Меняет значения флага
+  function movingEvent() {
+    isMoving = false;
+  }
+
+  // функция прокрутки точек
+  function moveDots() {
+    const dotsWidth = dots[0].offsetWidth;
+    const matginR = getComputedStyle(dots[0]).marginRight;
+    const step = (dotsWidth + parseInt(matginR));
+    const totalStep = idxActiveSlide - 1;
+    const shift = totalStep * step;
+    const dotsWrap = slider.querySelector('#sliderDotsWrap');
+    if (idxActiveSlide < 1) {
+      return;
+    }
+
+    if (dots.length - 2 < idxActiveSlide) {
+      return;
+    }
+    dotsWrap.style.left = -shift + 'px';
+
+  }
+
+  function showFullPicSlider(idx) {
+    fullPicSlider.classList.add('full-pic--is-active');
+    showCurrentFullPic(idx);
+  }
+
+  // закрываем блок с понорозмерными эл
+  function closeFullPicSlider() {
+    fullPicSlider.classList.remove('full-pic--is-active')
+    Array.from(fullPicSlides).forEach((el) => {
+      el.classList.remove('full-pic__item--is-active');
+      if (el.querySelector('video')) {
+        el.querySelector('video').pause();
+      }
+    })
+  }
+  //Показать полную версию картинки и текушего слайда
+  function showCurrentFullPic(idx) {
+    Array.from(fullPicSlides).forEach((el) => {
+      el.classList.remove('full-pic__item--is-active');
+      if (el.querySelector('video')) {
+        el.querySelector('video').pause();
+      }
+    })
+
+    fullPicSlides[idx].classList.add('full-pic__item--is-active');
+  }
+}
+
+// Запускаем видео
+function playMovie(el) {
+  const parent = el.closest('.full-pic__item');
+  const movie = parent.querySelector('video');
+  el.classList.add('full-pic__play--is-hide');
+  movie.play();
+}
+
+function stopMovie(el) {
+  const parent = el.closest('.full-pic__item');
+  const playBtn = parent.querySelector('.full-pic__play')
+  playBtn.classList.remove('full-pic__play--is-hide');
+  el.pause();
+}
+
+//Конец slider
 
 // Управление каруселью сенсером
 // Начало движения
