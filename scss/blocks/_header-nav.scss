@@ -1,7 +1,11 @@
 .h-nav-wrap {
+  display: none;
   position: relative;
   background: #1d295d;
   z-index: 10;
+  @media (min-width: 850px) {
+    display: block;
+  }
 }
 
 .h-nav {

@@ -68,21 +68,36 @@
         <ul class="h-contact__list">
           <li class="h-contact__item">
             <img src="./img/icon/phone-icon.svg" alt="" class="h-contact__icon">
-            <span class="h-contact__text">8 (421) 292-97-86</span>
+            <a href='tel:84212929786' class="h-contact__link">8 (421) 292-97-86</a>
           </li>
 
           <li class="h-contact__item">
             <img src="./img/icon/at-icon.svg" alt="" class="h-contact__icon">
-            <span class="h-contact__text">hab@metall-as.ru</span>
+            <a href="mailto:vlad@htmlbook.ru" class="h-contact__link">hab@metall-as.ru</a>
           </li>
           <li class="h-contact__item">
             <img src="./img/icon/cloud-icon.svg" alt="" class="h-contact__icon">
             <span id='application' class="h-contact__text pointer">Онлайн - заявка</span>
           </li>
         </ul>
+        <div class="h-mobile__btns">
+          <div id='searchBtn' class="h-mobile__btn-item">
+            <img class="h-mobile__btn-img" src="./img/control/m-search-icon.svg" alt="">
+          </div>
+          <div id='burgerBtn' class="h-mobile__btn-item">
+            <img class="h-mobile__btn-img" src="./img/control/m-burger.svg" alt="">
+          </div>
+
+        </div>
       </div>
     </div>
+
     <!--header-contact-->
+    <div id='mobileSearchWrap' class="search-mobile-wrap search-mobile--is-hide container">
+      <form action="" method="POST" class="search-mobile  ">
+        <input type="text" placeholder="Поиск" class="search-mobile__input">
+      </form>
+    </div>
 
   </header>
   <div class="wrap">

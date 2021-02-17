@@ -1,7 +1,11 @@
 .delivery {
+  display: none;
   border-top: 1px solid #1d295d;
   background: #264393;
   padding: 30px 0;
+  @media (min-width: 850px) {
+    display: flex;
+  }
 }
 
 .delivery__title {

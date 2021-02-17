@@ -9,7 +9,11 @@ body {
   font-weight: normal;
   font-size: 16px;
   color: #fff;
-  background: #1d295d;
+
+  background-color: #fff;
+  @media (min-width: 850px) {
+    background: #1d295d;
+  }
 }
 
 .is-no-scroll {
@@ -72,16 +76,17 @@ li {
 }
 
 .container {
-  max-width: 1192px;
+  width: 100%;
+  padding: 0 15px;
   margin: 0 auto;
-}
-
-.wrap {
-  display: flex;
-  flex-direction: column;
+  @media (min-width: 1222px) {
+    max-width: 1192px;
+    padding: 0 0px;
+  }
 }
 
 .content-wrap {
+  display: none;
   position: relative;
   padding: 62px 0 0 0;
   min-height: 1486px;

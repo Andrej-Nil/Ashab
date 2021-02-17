@@ -2,6 +2,8 @@
 
 const body = document.querySelector('body');
 const KEY_ESC = 27;
+const mobileSearchWrap = document.querySelector('#mobileSearchWrap');
+const mobileSearchBtn = document.querySelector('#searchBtn');
 const mainCarousel = document.querySelector('#mainCarousel');
 const slider = document.querySelector('#slider');
 const mainBg = document.querySelector('.main-bg');
@@ -40,6 +42,11 @@ let touchPosition = null; // растояние пройденое по сенс
 const regTel = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/;// проверка телефона
 const regMail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;// Проверка на емаил
 
+// Добовляем функцию открытия и закрытия поиска
+mobileSearchBtn.addEventListener('click', showSearch);
+
+
+
 // Добовлям фунцию для смены позиции mainBg
 window.addEventListener('scroll', changePosition);
 // Добовлям фунцию для отображекния эл.
@@ -64,7 +71,6 @@ Array.from(forms).forEach((form) => {
     formCheck(form);
   });
 });
-
 
 
 if (order) {
@@ -743,6 +749,12 @@ if (yandexmap) {
 //возвращает ширину елемента
 function getWidthEl(el) {
   return el.clientWidth;
+}
+
+//Открывает, закрывает строку тпоиска для мобильной версии
+function showSearch() {
+  mobileSearchWrap.classList.toggle('search-mobile--is-hide'
+  );
 }
 
 // функия смены свойство position  mainBg
