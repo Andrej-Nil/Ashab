@@ -1189,7 +1189,7 @@
         </nav>
         <div class="f-content">
           <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
-            <h4 class='f__title h4'>
+            <h4 class='f__title'>
               Обратная связь
             </h4>
             <p class="f__error error empty">Заполните все поля</p>
@@ -1205,29 +1205,32 @@
           </form>
 
           <div class="f-contacts">
-            <h4 class='f__title h4'>
+            <h4 class='f__title'>
               Контакты
             </h4>
 
             <ul class="f-contacts__list">
               <li class="f-contacts__item">
                 <img src="./img/icon/f-point-icon.svg" alt="!" class="f-contacts__icon">
-                <p class="f-contacts__text">
-                  Россия, Хабаровск,<br />
-                  Производственный переулок, 3, оф.6
-                </p>
+                <div class="f-contacts__text">
+                  <h5 class='f-contacts__title'>Адрес:</h5>
+                  <p class='f-contacts__desc'>Россия, Хабаровск,<br /> Производственный переулок, 3, оф.6</p>
+                </div>
               </li>
               <li class="f-contacts__item">
                 <img src="./img/icon/f-phone-icon.svg" alt="!" class="f-contacts__icon">
-                <p class="f-contacts__text">
-                  8 (421) 292-97-86
-                </p>
+                <div class="f-contacts__text">
+                  <h5 class='f-contacts__title'>Телефон:</h5>
+
+                  <p class='f-contacts__desc'>8 (421) 292-97-86</p>
+                </div>
               </li>
               <li class="f-contacts__item">
                 <img src="./img/icon/f-at-icon.svg" alt="!" class="f-contacts__icon">
-                <p class="f-contacts__text">
-                  hab@metall-as.ru
-                </p>
+                <div class="f-contacts__text">
+                  <h5 class='f-contacts__title'>Электронная почта:</h5>
+                  <p class='f-contacts__desc'>hab@metall-as.ru</p>
+                </div>
               </li>
             </ul>
           </div>
@@ -1238,6 +1241,20 @@
             </a>
           </div>
         </div>
+        <div class="f-socials">
+          <a href="#!" class="f-socials__item">
+            <img src="./img/icon/whatsApp-icon.svg" alt="" class="f-socials__img">
+          </a>
+          <a href="#!" class="f-socials__item">
+            <img src="./img/icon/instagram-icon.svg" alt="" class="f-socials__img">
+          </a>
+          <a href="#!" class="f-socials__item">
+            <img src="./img/icon/telegram-icon.svg" alt="" class="f-socials__img">
+          </a>
+        </div>
+        <p class="copywrite">
+          Cайт создан на площадке «<a href="#!" class="copywrite__link link">В ассортименте.ру</a>»
+        </p>
       </div>
     </footer>
 

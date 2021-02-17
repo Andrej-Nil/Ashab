@@ -1,9 +1,32 @@
+.f__title {
+  font-family: "Roboto" sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 95.2%;
+  color: #ffffff;
+  @media (mib-width: 850px) {
+    font-family: "Avenir", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 95.2%;
+  }
+}
+
 .f__form {
   margin-right: 66px;
 }
 
 .callback-form {
-  width: 462px;
+  width: 250px;
+  display: none;
+  @media (min-width: 850px) {
+    display: block;
+  }
+  @media (min-width: 1030px) {
+    width: 462px;
+  }
 }
 
 .f__error {
