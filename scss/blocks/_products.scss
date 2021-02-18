@@ -1,65 +1,322 @@
 .products {
-  display: none;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
+  @media (min-width: 1000px) {
+    margin-bottom: 100px;
+  }
+}
+
+.products__wrap {
+  margin-bottom: 10px;
+  padding: 0 15px;
+  @media (min-width: 1000px) {
+    margin-bottom: 20px;
+  }
+  @media (min-width: 1280px) {
+    padding: 0;
+  }
 }
 
 .product-card {
   position: relative;
   width: 100%;
-  padding: 0 0 20px 25px;
-  margin-bottom: 20px;
+  padding: 15px 0 20px 0;
+
   &:last-child {
     margin-bottom: 0;
   }
-}
+  @media (min-width: 600px) {
+    padding: 15px 0 20px 25px;
+  }
 
-.products__wrap {
-  margin-bottom: 20px;
+  @media (min-width: 800px) {
+    padding: 0 0 20px 25px;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 1000px) {
+    padding: 15px 0 20px 25px;
+  }
+  @media (min-width: 1280px) {
+    padding: 0 0 20px 25px;
+  }
 }
 
 .product-card__desc {
+  position: relative;
   display: flex;
-  background: #264393;
-  height: 150px;
-  padding: 23px 15px 22px 198px;
+  background: radial-gradient(
+    183.91% 99.76% at 50% 0.24%,
+    #264393 0%,
+    #1d295d 100%
+  );
+  flex-direction: column;
+  padding: 110px 10px 9px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  min-height: 150px;
+  @media (min-width: 600px) {
+    padding: 23px 15px 22px 198px;
+    flex-direction: column;
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1000px) {
+    flex-direction: column;
+    background: #264393;
+  }
+  @media (min-width: 1280px) {
+    flex-direction: row;
+  }
 }
 
 .product-card__text {
-  margin-right: 52px;
+  margin-bottom: 5px;
+  @media (min-width: 600px) {
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 800px) {
+    margin: 0 52px 0 0;
+  }
+
+  @media (min-width: 1000px) {
+    margin-bottom: 30px;
+  }
+  @media (min-width: 1280px) {
+    margin: 0 52px 0 0;
+  }
 }
 
 .product-card__title {
-  margin-bottom: 37px;
+  //margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 110%;
+  color: #ffffff;
+  //width: 200px;
+  @media (min-width: 600px) {
+    width: auto;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 800px) {
+    margin-bottom: 37px;
+  }
+
+  @media (min-width: 850px) {
+    font-weight: 500;
+    font-size: 20px;
+  }
+  @media (min-width: 1000px) {
+    margin-bottom: 20px;
+  }
+  @media (min-width: 1280px) {
+    margin-bottom: 37px;
+  }
+}
+
+.product-card__img-wrap {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  max-width: 290px;
+  width: 100%;
+  height: 105px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  @media (min-width: 600px) {
+    width: 198px;
+    height: 150px;
+    left: 0;
+    top: 0;
+  }
+
+  @media (min-width: 800px) {
+    top: auto;
+    bottom: 0;
+  }
+
+  @media (min-width: 1000px) {
+    left: 0;
+    top: 0;
+  }
+  @media (min-width: 1280px) {
+    top: auto;
+    bottom: 0;
+  }
 }
 
 .product-card__img {
   position: absolute;
+  top: 50%;
   left: 0;
-  bottom: 0;
-  width: 198px;
-  height: 150px;
-  border: 2px solid #9dcefc;
+  width: 100%;
+  height: auto;
+  transform: translate(0, -50%);
+  @media (min-width: 600px) {
+    border: 2px solid #9dcefc;
+  }
 }
 
 .product-card__price {
+  display: none;
   font-family: "Roboto", sans-serif;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 20px;
   line-height: 100%;
+  @media (min-width: 600px) {
+    display: block;
+  }
 }
 
 .product-card__price--blue {
   color: #9dcefc;
 }
 
-.product-card__other {
+.product-card__buy {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: flex-end;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  @media (min-width: 800px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  @media (min-width: 1280px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
-.product-card__btn {
-  margin-top: auto;
+.product-card__sticker {
+  position: absolute;
+  right: 0;
+  top: 75px;
+  z-index: 20;
+  @media (min-width: 320px) {
+    position: absolute;
+    bottom: auto;
+    left: 219px;
+    right: auto;
+  }
+  @media (min-width: 600px) {
+    position: static;
+    bottom: auto;
+    left: auto;
+    top: auto;
+  }
+
+  @media (min-width: 800px) {
+    position: static;
+    bottom: auto;
+    left: auto;
+  }
+
+  @media (min-width: 1000px) {
+    position: absolute;
+    bottom: 22px;
+    left: 15px;
+  }
+  @media (min-width: 1280px) {
+    position: static;
+    bottom: auto;
+    left: auto;
+  }
+}
+
+.product-card__order-mobile {
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+
+.product-card__order {
+  display: none;
+  margin-left: auto;
+  @media (min-width: 600px) {
+    display: block;
+    margin-left: auto;
+  }
+
+  @media (min-width: 800px) {
+    margin: auto 0 0 0;
+  }
+  @media (min-width: 1000px) {
+    margin: 0 0 0 auto;
+  }
+  @media (min-width: 1280px) {
+    margin: auto 0 0 0;
+  }
+}
+
+.buy-mobile {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+
+.buy-mobile__price {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 100%;
+  color: #9dcefc;
+}
+
+.buy-mobile__curenncy {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  color: #ffffff;
+}
+
+.buy-mobile__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.buy-mobile__icon {
+  width: 29px;
+  height: 27px;
+  margin-right: 3px;
+}
+
+.products__btn {
+  padding: 0 15px;
+  @media (min-width: 1280px) {
+    padding: 0;
+  }
+}
+
+.more-btn {
+  width: 100%;
+  text-align: center;
+  @media (min-width: 600px) {
+    width: auto;
+  }
 }
