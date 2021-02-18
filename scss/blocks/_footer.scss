@@ -3,7 +3,7 @@
   padding: 16px 0 25px 0;
   background: #264393;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     padding: 50px 0 150px 0;
   }
 }
@@ -11,7 +11,7 @@
 .f-content {
   display: flex;
   margin-bottom: 39px;
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     margin-bottom: 0;
   }
 }
@@ -19,7 +19,7 @@
 .f-nav {
   display: none;
   margin-bottom: 40px;
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     display: flex;
   }
 }
@@ -89,7 +89,7 @@
   @media (min-width: 400px) {
     margin: 0 0 20px;
   }
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     display: none;
   }
 }
@@ -109,7 +109,7 @@
   @media (min-width: 400px) {
     text-align: left;
   }
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     display: none;
   }
 }

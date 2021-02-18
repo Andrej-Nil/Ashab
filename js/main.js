@@ -29,6 +29,7 @@ const decQuantityBtn = document.querySelector('#decQuantity');
 const orderPrice = document.querySelector('#orderPrice');
 const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
 const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
+const dropdownWraps = document.querySelectorAll('.dropdown-wrap');
 
 
 const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
@@ -433,8 +434,8 @@ setBgModalHeight(bgModal);
 
 window.addEventListener(`resize`, () => {
   setBgModalHeight(bgModal);
+  adaptDropdownsHeight();
 }, false);
-
 if (faqModal) {
   window.addEventListener(`resize`, () => {
     setBgModalHeight(faqModal);
@@ -520,19 +521,48 @@ function closeModal(el) {
 
 //Добовляем функцию открывае/закрывае выподающих эл
 document.onclick = function (e) {
-  let el = e.target;
+  const el = e.target;
   if (el.closest('.press-to-show')) {
     slow(el);
   }
 }
 
+
 // Открываем/закрываем выподоющие эл
 function slow(el) {
-  let parent = el.closest('.parent-hiddne-el')
-  let hiddenEl = parent.querySelector('.hidden');
-  let arrow = parent.querySelector('.arrow-show');
-  hiddenEl.classList.toggle('is-show');
-  arrow.classList.toggle('arrow-up');
+  const dropdownWrap = el.closest('.dropdown-wrap')
+  const dropdownHeader = dropdownWrap.querySelector('.press-to-show');
+  const dropdown = dropdownWrap.querySelector('.dropdown');
+  const hiddenEl = dropdownWrap.querySelector('.hidden-el');
+  const arrow = dropdownWrap.querySelector('.arrow-show');
+  const heightHiddenEl = hiddenEl.clientHeight;
+  if (dropdown.classList.contains('dropdown--is-show')) {
+    dropdown.style.height = '0px';
+    dropdown.classList.remove('dropdown--is-show');
+    arrow.classList.remove('arrow-up');
+    dropdownWrap.classList.remove('is-active');
+    dropdownHeader.classList.remove('is-active')
+    return;
+  }
+  dropdown.style.height = heightHiddenEl + 'px';
+  dropdown.classList.add('dropdown--is-show');
+  arrow.classList.add('arrow-up');
+  dropdownWrap.classList.add('is-active');
+  dropdownHeader.classList.add('is-active')
+}
+
+//Адаптирует высоту dropdown 
+function adaptDropdownsHeight() {
+
+  Array.from(dropdownWraps).forEach((el) => {
+    const dropdown = el.querySelector('.dropdown');
+    const hiddenEl = dropdown.querySelector('.hidden-el');
+
+    if (dropdown.classList.contains('dropdown--is-show')) {
+      const dropdownHeight = hiddenEl.clientHeight;
+      dropdown.style.height = dropdownHeight + 'px';
+    }
+  })
 }
 
 // Валидация форм

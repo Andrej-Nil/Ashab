@@ -1,3 +1,10 @@
+.col-catalog {
+  display: none;
+  @media (min-width: 1000px) {
+    display: block;
+  }
+}
+
 .form-search {
   margin-bottom: 40px;
 }
@@ -92,15 +99,11 @@
   line-height: 95.2%;
 }
 
-.product__list {
-  padding: 0 18px 0 25px;
-  overflow: hidden;
-  max-height: 0;
+.product__dropdown {
   transition: 0.2s ease-in-out;
 }
 
-.product__list.is-show {
-  max-height: 2000px;
+.product__list {
   padding: 20px 0 18px 27px;
 }
 

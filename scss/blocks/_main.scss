@@ -11,7 +11,7 @@ body {
   color: #fff;
 
   background-color: #fff;
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     background: #1d295d;
   }
 }
@@ -22,11 +22,21 @@ body {
 
 h2,
 .h2 {
-  font-family: "Avenir", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 50px;
-  line-height: 95.2%;
+  font-size: 30px;
+  line-height: 110%;
+  color: #1d295d;
+  @media (min-width: 1000px) {
+    font-family: "Avenir", sans-serif;
+    font-size: 40px;
+    line-height: 95.2%;
+    color: #fff;
+  }
+  @media (min-width: 1280px) {
+    font-size: 50px;
+  }
 }
 
 h3,
@@ -77,27 +87,44 @@ li {
 
 .container {
   width: 100%;
-  padding: 0 15px;
+  max-width: 100%;
   margin: 0 auto;
-  @media (min-width: 1222px) {
+
+  @media (min-width: 1280px) {
     max-width: 1192px;
     padding: 0 0px;
   }
 }
 
 .content-wrap {
-  display: none;
+  position: relative;
+}
+
+.content {
+  margin: 0 auto;
   position: relative;
   padding: 62px 0 0 0;
   min-height: 1486px;
+  //max-width: 844px;
+  width: 100%;
+  @media (min-width: 1000px) {
+    max-width: 930px;
+  }
+  @media (min-width: 1280px) {
+    max-width: 100%;
+  }
 }
 
 .main-bg {
   position: fixed;
+  display: none;
   width: 100%;
   top: 0;
   left: 0;
   z-index: -10;
+  @media (min-width: 1000px) {
+    display: block;
+  }
 }
 
 .main-bg--absolute {
@@ -107,17 +134,31 @@ li {
 }
 
 .col-content {
-  max-width: 844px;
   width: 100%;
+  //max-width: 844px;
+  width: 100%;
+  @media (min-width: 1000px) {
+    max-width: 550px;
+  }
+  @media (min-width: 1280px) {
+    max-width: 844px;
+  }
 }
 
 .section-title {
+  padding: 0 15px;
   margin-bottom: 40px;
+  @media (min-width: 1000px) {
+    padding: 0;
+  }
 }
 
 .cols-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  @media (min-width: 1000px) {
+    justify-content: space-between;
+  }
 }
 
 .col-catalog {
@@ -198,11 +239,18 @@ li {
 }
 
 .path {
+  display: none;
   font-family: "Avenir", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 100%;
+  @media (min-width: 1000px) {
+    display: block;
+  }
+  @media (min-width: 1280px) {
+    font-size: 20px;
+  }
 }
 
 .path__slash {
@@ -370,4 +418,9 @@ li {
 
 .success--is-show {
   display: block;
+}
+
+.dropdown {
+  overflow: hidden;
+  height: 0;
 }
