@@ -88,8 +88,8 @@ if (order) {
   decQuantity.addEventListener('click', decrease);
 }
 
-//mobileMenuOpenBtn.addEventListener('click', openMobileMenu);
-//mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
+mobileMenuOpenBtn.addEventListener('click', openMobileMenu);
+mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
 
 //Карусели
 // начало Главная карусель

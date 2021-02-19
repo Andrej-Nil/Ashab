@@ -9,8 +9,9 @@ body {
   font-weight: normal;
   font-size: 16px;
   color: #fff;
-  overflow-x: hidden;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
   @media (min-width: 1000px) {
     background: #1d295d;
   }
@@ -98,6 +99,10 @@ li {
 
 .content-wrap {
   position: relative;
+  order: 3;
+  @media (min-width: 1000px) {
+    order: 4;
+  }
 }
 
 .content {

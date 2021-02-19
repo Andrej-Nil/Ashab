@@ -1,12 +1,13 @@
 .mobile-menu {
+  overflow: hidden;
   position: absolute;
   top: 0;
-  right: -100%;
-  max-width: 400px;
+  right: 0;
+  max-width: 0px;
   width: 100%;
   background: #1d295d;
   z-index: 1000;
-  padding: 24px 23px 101px 34px;
+
   transition: 0.2s ease-in-out;
   @media (min-width: 1000px) {
     display: none;
@@ -14,17 +15,18 @@
 }
 
 .mobile-menu--is-open {
-  right: 0;
+  max-width: 400px;
 }
 
 .mobile-menu__inner {
   position: relative;
+  padding: 24px 23px 101px 34px;
 }
 
 .mobile-menu__close {
   position: absolute;
-  top: 0;
-  right: 0;
+  //top: 24px;
+  right: 23px;
   width: 24px;
   height: 24px;
   cursor: pointer;
