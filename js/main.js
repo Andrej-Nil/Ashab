@@ -30,12 +30,11 @@ const orderPrice = document.querySelector('#orderPrice');
 const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
 const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
 const dropdownWraps = document.querySelectorAll('.dropdown-wrap');
-
-
+const mobileMenu = document.querySelector('#mobileNav');
+const mobileMenuOpenBtn = document.querySelector('#burgerBtn');
+const mobileMenuCloseBtn = document.querySelector('#mobileMenuClose');
 const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
-
 const callbackForm = document.querySelector('#callbackForm');
-
 const sensitivity = 20; // кол пикселей для регистрации движения
 let touchStart = null; // начало движение по сенсеру
 let touchPosition = null; // растояние пройденое по сенсеру
@@ -45,8 +44,6 @@ const regMail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]
 
 // Добовляем функцию открытия и закрытия поиска
 mobileSearchBtn.addEventListener('click', showSearch);
-
-
 
 // Добовлям фунцию для смены позиции mainBg
 window.addEventListener('scroll', changePosition);
@@ -91,6 +88,8 @@ if (order) {
   decQuantity.addEventListener('click', decrease);
 }
 
+//mobileMenuOpenBtn.addEventListener('click', openMobileMenu);
+//mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
 
 //Карусели
 // начало Главная карусель
@@ -518,6 +517,13 @@ function closeModal(el) {
   body.classList.remove('is-no-scroll');
 }
 
+function openMobileMenu() {
+  mobileMenu.classList.add('mobile-menu--is-open')
+}
+function closeMobileMenu() {
+  mobileMenu.classList.remove('mobile-menu--is-open')
+}
+
 
 //Добовляем функцию открывае/закрывае выподающих эл
 document.onclick = function (e) {
@@ -684,12 +690,11 @@ function isEmptyValue(inputs, form) {
 
 // Возвращает резулитат проверки
 function isValidValue(inputs, form) {
-
   return valueCheck(inputs, form);
 }
 
 
-// Пролверка на регулярным выражением
+// Проверка на регулярным выражением
 function regexСheck(value, reg) {
   return reg.test(value)
 }
@@ -811,7 +816,6 @@ function showUp() {
     up.classList.remove('up--is-show')
   }
 }
-
 
 // увеличевает количество товаров и вываит итоговую цену
 function increase() {
