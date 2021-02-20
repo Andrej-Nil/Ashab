@@ -34,7 +34,10 @@ const mobileMenu = document.querySelector('#mobileNav');
 const mobileMenuOpenBtn = document.querySelector('#burgerBtn');
 const mobileMenuCloseBtn = document.querySelector('#mobileMenuClose');
 const closeBtn = document.querySelectorAll('.close-btn'); // кнопки закрытия модельных окон
+const callbackFormModal = document.querySelector('#callbackFormModal')
 const callbackForm = document.querySelector('#callbackForm');
+const callbackClose = document.querySelectorAll('.callback-close');
+const callbackOpenBtn = document.querySelector('#callbackBtn');
 const sensitivity = 20; // кол пикселей для регистрации движения
 let touchStart = null; // начало движение по сенсеру
 let touchPosition = null; // растояние пройденое по сенсеру
@@ -80,7 +83,8 @@ if (order) {
 
   //Добовляем функцию для окраничение ввода в поле количесво товоров
   orderQuantityInput.addEventListener('input', () => {
-    setValueCountInput(1)
+
+    setValueCountInput(0)
   });
 
   //Добовляем функцию для увеличение и уменьшения кол т оваров
@@ -433,6 +437,7 @@ setBgModalHeight(bgModal);
 
 window.addEventListener(`resize`, () => {
   setBgModalHeight(bgModal);
+  //setBgModalHeight(callbackFormBg);
   adaptDropdownsHeight();
 }, false);
 if (faqModal) {
@@ -455,6 +460,14 @@ Array.from(orderBtns).forEach((el) => {
 // Добовляем функцию закрытия для модульных окон
 Array.from(closeBtn).forEach((el) => {
   el.addEventListener('click', () => { closeModal(el) });
+});
+
+// Добовляем функцию открытия callbackModal
+callbackOpenBtn.addEventListener('click', callbackModalOpen)
+
+// Добовляем функцию закрытия callbackModal
+Array.from(callbackClose).forEach((el) => {
+  el.addEventListener('click', callbackModalClose);
 });
 
 
@@ -502,6 +515,15 @@ function closeFaqModal() {
   faqModal.classList.remove('modal--is-show')
 }
 
+//callback-close Закрываем модульное окно callBack Обратная связь
+// Открываем callbackModal
+function callbackModalOpen() {
+  callbackFormModal.classList.add('callback-form__wrap--is-show');
+}
+// Закрываем callbackModal
+function callbackModalClose() {
+  callbackFormModal.classList.remove('callback-form__wrap--is-show');
+}
 //Функция открытия модульного окна
 function showModal(idModal) {
   bgModal.classList.add('shading--is-show');
@@ -575,10 +597,15 @@ function adaptDropdownsHeight() {
 //Устанавливает заданное число при
 // условии если введеное число меньше или NaN
 function setValueCountInput(value) {
+  const orderPrice = orderForm.querySelector('#orderPrice')
+  const price = +orderPrice.getAttribute('data-price')
   const inputValue = +orderQuantityInput.value;
-  if (inputValue < 1 || isNaN(inputValue)) {
+  if (inputValue < 0 || isNaN(inputValue)) {
     orderQuantityInput.value = value;
+    orderPrice.innerHTML = totalPrice(price, value).toLocaleString();
+    return;
   }
+  orderPrice.innerHTML = totalPrice(price, inputValue).toLocaleString();
 }
 
 //Проверка форм
@@ -586,7 +613,7 @@ function formCheck(form) {
   // Очещаем ошибки
   hideErrorMessages(form);
   // проверка значение инпутов
-  InputsCheck(form);
+  inputsCheck(form);
 }
 
 function orderFormCheck() {
@@ -633,9 +660,8 @@ function orderInputsCheck() {
 }
 
 //Проверка инпутов
-function InputsCheck(form) {
+function inputsCheck(form) {
   const inputs = form.querySelectorAll('.input');
-  console.log(inputs)
   // Если есть пустое поле выдаем ошибку, останавливаем проверку
   if (isEmptyValue(inputs, form)) {
     return;
@@ -645,17 +671,16 @@ function InputsCheck(form) {
   // Если проверка успешна, то вывести сообщение о успехе и очистить инпуты
   if (success) {
     if (form.id === "callbackForm") {
-      const successMessage = form.querySelector('.success');
-      successMessage.classList.add('success--is-show');
+      bgModal.classList.add('shading--is-show')
+      applicationThanks.classList.add('modal--is-show');
       clearInputs(inputs);
+      callbackModalClose();
       return;
     }
 
     if (form.id === "applicationForm") {
-      const applicationThanks = bgModal.querySelector('#applicationThanks');
       applicationThanks.classList.add('modal--is-show');
       applicationModal.classList.remove('modal--is-show')
-      console.log(applicationThanks)
       clearInputs(inputs);
       return;
     }
@@ -677,7 +702,6 @@ function InputsCheck(form) {
 // Провекрка на пустое значение инпута
 function isEmptyValue(inputs, form) {
   const emptyError = form.querySelector('.empty');
-  console.log(emptyError)
   let isEmpty = false;
   Array.from(inputs).forEach((el) => {
     if (!el.value.trim()) {
@@ -701,11 +725,7 @@ function regexСheck(value, reg) {
 
 // Прячем сообщения с ошибками
 function hideErrorMessages(form) {
-  const successMessage = form.querySelector('.success');
   const errorMessage = form.querySelectorAll('.error');
-  if (form.id === 'callbackForm') {
-    successMessage.classList.remove('success--is-show');
-  }
 
   Array.from(errorMessage).forEach((el) => {
     el.classList.remove('error--is-show');

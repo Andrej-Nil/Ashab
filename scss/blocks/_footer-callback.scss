@@ -1,31 +1,76 @@
 .f__title {
+  display: none;
   font-family: "Roboto" sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
   line-height: 95.2%;
   color: #ffffff;
-  @media (mib-width: 1000px) {
-    font-family: "Avenir", sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 95.2%;
+  @media (min-width: 1000px) {
+    display: block;
   }
 }
 
 .f__form {
   margin-right: 66px;
 }
-
-.callback-form {
-  width: 250px;
+.callback-form__wrap {
+  position: fixed;
   display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.801);
+  overflow-y: auto;
+  z-index: 1000;
   @media (min-width: 1000px) {
     display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    background: rgba(0, 0, 0, 0);
   }
-  @media (min-width: 1030px) {
+}
+
+.callback-form__wrap--is-show {
+  display: flex;
+}
+.callback-form {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  padding: 73px 15px 55px;
+  @media (min-width: 670px) {
+    padding: 73px 55px 55px;
+  }
+  @media (min-width: 1000px) {
+    padding: 0;
+    position: static;
+    display: block;
+    margin: 0 66px 0 0;
     width: 462px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+.callback-close__wrap {
+  @media (min-width: 1000px) {
+    display: none;
+  }
+}
+
+.callback-modal__title {
+  @media (min-width: 1000px) {
+    display: none;
+  }
+}
+
+.callback-modal__desc {
+  @media (min-width: 1000px) {
+    display: none;
   }
 }
 
@@ -36,17 +81,25 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 95.2%;
-  color: #fdaeae;
+  color: #ff0000;
+  @media (min-width: 1000px) {
+    color: #fdaeae;
+  }
 }
 
 .f__success {
   margin-bottom: 10px;
   font-family: "Avenir", sans-serif;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   line-height: 95.2%;
-  color: #ffffff;
+  color: #1d295d;
+
+  @media (min-width: 1000px) {
+    color: #ffffff;
+    font-weight: normal;
+  }
 }
 
 .callback-form__input-wrap {
@@ -57,11 +110,11 @@
 
 .callback-form__input {
   display: block;
-  width: 226px;
+  width: 100%;
   outline: none;
-  border: 1px solid #ffffff;
-  background: #264393;
-  height: 40px;
+  border: 1px solid #1d295d;
+  background: #fff;
+  height: 50px;
   padding: 12px 18px;
   margin-bottom: 10px;
 
@@ -70,7 +123,14 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 95.2%;
-  color: #fff;
+  color: #264393;
+  @media (min-width: 1000px) {
+    width: 226px;
+    height: 40px;
+    border: 1px solid #ffffff;
+    background: #264393;
+    color: #fff;
+  }
 }
 
 .callback-form__input::placeholder {
@@ -79,7 +139,7 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 95.2%;
-  color: #fff;
+  color: #ccc;
 }
 .callback-form__input::-webkit-input-placeholder {
   font-family: "Avenir", sans-serif;
@@ -87,7 +147,7 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 95.2%;
-  color: #fff;
+  color: #ccc;
 }
 .callback-form__input:-ms-input-placeholder {
   font-family: "Avenir", sans-serif;
@@ -95,7 +155,7 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 95.2%;
-  color: #fff;
+  color: #ccc;
 }
 .callback-form__input::-moz-placeholder {
   font-family: "Avenir", sans-serif;
@@ -103,7 +163,7 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 95.2%;
-  color: #fff;
+  color: #ccc;
 }
 .callback-form__input:-moz-placeholder {
   font-family: "Avenir", sans-serif;
@@ -111,12 +171,27 @@
   font-weight: 300;
   font-size: 18px;
   line-height: 95.2%;
-  color: #fff;
+  color: #ccc;
 }
 
 .callback-form__submit {
   outline: none;
   border: none;
-  width: 226px;
-  height: 40px;
+  width: 100%;
+  height: 50px;
+  @media (min-width: 1000px) {
+    width: 226px;
+    height: 40px;
+  }
+}
+
+.callback-btn {
+  width: 100%;
+  margin-bottom: 30px;
+  @media (min-width: 400px) {
+    width: auto;
+  }
+  @media (min-width: 1000px) {
+    display: none;
+  }
 }
