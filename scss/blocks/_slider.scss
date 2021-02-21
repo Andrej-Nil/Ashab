@@ -19,6 +19,7 @@
 }
 
 .slider__item {
+  flex: 1;
   position: relative;
   width: 300px;
   height: 300px;
@@ -42,9 +43,12 @@
 
 .slider__arrow-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 45px;
   margin-bottom: 12px;
+  @media (min-width: 1280px) {
+    justify-content: flex-end;
+  }
 }
 
 .slider__arrows {
@@ -116,7 +120,7 @@
 
 .slider__dot {
   position: relative;
-  margin-right: 5px;
+  margin-right: 4px;
   flex: 0 0 97px;
   width: 97px;
   height: 97px;
@@ -170,17 +174,13 @@
 .full-pic__item {
   position: relative;
   display: none;
-  max-width: 100%;
-  max-height: 95%;
-  width: auto;
-  height: 100%;
 }
 
 .full-pic__content {
   max-width: 100%;
-  max-height: 95%;
+  max-height: 90%;
   width: auto;
-  height: 100%;
+  height: auto;
 }
 
 .full-pic__item--is-active {

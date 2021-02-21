@@ -139,30 +139,39 @@
                       транспортом.
                     </p>
                   </div>
+                  <div class="desc-block__buy">
+                    <div class='desc-block__m-price'>
+                      <p class="desc-block__m-price-old">Старая цена: 85 000</p>
+                      <p class="desc-block__m-price-new">Новая цена: <span class="desc-block__m-price--blue">65
+                          000</span></p>
+                    </div>
+                    <div class="desc-block__order">
+                      <button class="product-card__btn desc-block__btn dark-btn">
+                        Заказать
+                      </button>
+                    </div>
 
-                  <div class="desc-block__order">
-                    <button class="product-card__btn dark-btn">
-                      Заказать
-                    </button>
-                  </div>
+                    <div class="desc-block__price">
 
-                  <div class="desc-block__price">
-                    <p class="desc-block__price-text">
-                      Цена: <span class="desc-block__price-num desc-block__price-num--blue">65 000</span>
-                    </p>
 
-                    <p class="desc-block__price-text">
-                      Актуально: <span class="desc-block__price-num">18.12.2020</span>
-                    </p>
+                      <p class="desc-block__price-text">
+                        Цена: <span class="desc-block__price-num desc-block__price-num--blue">65 000</span>
+                      </p>
+
+                      <p class=" desc-block__date desc-block__price-text ">
+                        Актуально: <span class="desc-block__price-num">18.12.2020</span>
+                      </p>
+                    </div>
                   </div>
 
                 </div>
 
                 <div class="desc-block__preview">
-                  <div class="desc-block__sticker sticker-sale">
-                    SALE
-                  </div>
+
                   <div id='slider' class="desc-block__slider">
+                    <div class="desc-block__sticker sticker-sale">
+                      SALE
+                    </div>
                     <div id='sliderContainer' class="slider slider-container">
                       <div id="slidesWrap" class="slides__wrap">
                         <div class="slider__item slider__item--is-active">
@@ -182,6 +191,7 @@
                     </div>
 
                     <div class="slider__arrow-nav">
+
                       <div class="slider__arrows">
                         <div id='prevSlide' class="slider__arrow">
                           <img src="./img/control/slider-prev.svg" alt="<" class="slider__arrow-img">
@@ -1755,21 +1765,33 @@
         </div>
       </nav>
       <div class="f-content">
-        <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
-          <h4 class='f__title'>
-            Обратная связь
-          </h4>
-          <p class="f__error error empty">Заполните все поля</p>
-          <p class="f__error error phone">Неправильно указан номер</p>
-          <p class="f__error error mail">Неправильна указана почта</p>
-          <p class="f__success success ">Данные успешно отправлены</p>
-          <div class="callback-form__input-wrap">
-            <input class="callback-form__input input" type="text" placeholder="Ваше имя">
-            <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
-            <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
-            <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
-          </div>
-        </form>
+        <div id='callbackFormModal' class="callback-form__wrap">
+          <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
+            <div class="callback-close__wrap close">
+              <span class="close__word callback-close">
+                Закрыть
+              </span>
+              <img src="./img/control/close-modal.svg" alt="" class="close__icon callback-close">
+            </div>
+            <h4 class='f__title'>
+              Обратная связь
+            </h4>
+            <h4 class='callback-modal__title modal__title'>
+              Почти готово
+            </h4>
+            <p class='callback-modal__desc modal__desc'>Укажите ваш телефонный номер для звонка оператора</p>
+
+            <p class="f__error error empty">Заполните все поля</p>
+            <p class="f__error error phone">Неправильно указан номер</p>
+            <p class="f__error error mail">Неправильна указана почта</p>
+            <div class="callback-form__input-wrap">
+              <input class="callback-form__input input" type="text" placeholder="Ваше имя">
+              <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
+              <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
+              <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
+            </div>
+          </form>
+        </div>
 
         <div class="f-contacts">
           <h4 class='f__title'>
@@ -1808,6 +1830,10 @@
           </a>
         </div>
       </div>
+
+      <span id='callbackBtn' class="callback-btn light-btn">
+        Обратная связь
+      </span>
       <div class="f-socials">
         <a href="#!" class="f-socials__item">
           <img src="./img/icon/whatsApp-icon.svg" alt="" class="f-socials__img">
@@ -1830,6 +1856,80 @@
       <img src="./img/control/up-icon.svg" alt="" class="up-btn__img">
       <img src="./img/control/up-mobile-icon.svg" alt="" class="up-btn__img-mobile">
     </div>
+  </div>
+
+  <div id='mobileNav' class="mobile-menu">
+    <div class="mobile-menu__inner">
+      <div id='mobileMenuClose' class="mobile-menu__close">
+        <img src="./img/control/mobile-menu-close.svg" alt="" class="mobile-menu__close-btn">
+      </div>
+      <div class="mobile__login">
+        <a href="#!" class="mobile__item">
+          Регистрация
+        </a>
+        <span class="mobile__slash">/</span>
+        <a href="#!" class="mobile__item">
+          вход
+        </a>
+      </div>
+
+      <nav class="mobile-nav">
+        <ul class="mobile-nav__list">
+          <li class="mobile-nav__item">
+            <a href="index.html" class="mobile-nav__link">
+              Главная
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="about.html" class="mobile-nav__link">
+              О компании
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="catalog.html" class="mobile-nav__link">
+              Каталог
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="#!" class="mobile-nav__link">
+              Продукция
+            </a>
+          </li>
+
+          <li class="mobile-nav__item">
+            <a href="#!" class="mobile-nav__link">
+              Производство
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="#!" class="mobile-nav__link">
+              Услуги
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="stock.html" class="mobile-nav__link mobile-nav__link--is-active">
+              Акции
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="contacts.html" class="mobile-nav__link">
+              Контакты
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="news.html" class="mobile-nav__link">
+              Новости
+            </a>
+          </li>
+          <li class="mobile-nav__item">
+            <a href="#!" class="mobile-nav__link">
+              Отзовы
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
   </div>
 
   <!--modal-windows-->
