@@ -586,6 +586,12 @@ li {
   }
 }
 
+@media (min-width: 1000px) {
+  .desc-block__preview {
+    margin: 0 0 36px 0;
+  }
+}
+
 @media (min-width: 1280px) {
   .desc-block__preview {
     margin: 0 20px 0 0;
@@ -641,7 +647,6 @@ li {
 }
 
 .desc-block__list {
-  padding-left: 47px;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 300;
@@ -649,16 +654,37 @@ li {
   line-height: 100%;
 }
 
+@media (min-width: 1280px) {
+  .desc-block__list {
+    padding-left: 47px;
+  }
+}
+
 .desc-block__item {
   display: inline-block;
-  width: 178px;
-  margin: 0 20px 10px 0;
+  width: 49%;
+  margin: 0 0 10px 0;
+}
+
+@media (min-width: 1280px) {
+  .desc-block__item {
+    width: 178px;
+    margin: 0 20px 10px 0;
+  }
 }
 
 .desc-block__img {
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
+  max-height: auto;
   border: 2px solid #9dcefc;
+}
+
+@media (min-width: 1280px) {
+  .desc-block__img {
+    max-width: 300px;
+    max-height: 300px;
+  }
 }
 
 .desc-block__paragraph {
@@ -2055,13 +2081,7 @@ li {
 }
 
 .products {
-  margin-bottom: 80px;
-}
-
-@media (min-width: 1000px) {
-  .products {
-    margin-bottom: 100px;
-  }
+  margin-bottom: 50px;
 }
 
 .products__wrap {
@@ -2998,6 +3018,77 @@ li {
   }
 }
 
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 50px;
+  padding: 0 15px;
+}
+
+@media (min-width: 1000px) {
+  .pagination {
+    margin-bottom: 100px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pagination {
+    padding: 0;
+  }
+}
+
+.pagination__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #fff;
+  background: radial-gradient(157.38% 59.19% at 50% 59.19%, #264393 0%, #1d295d 100%);
+  margin-right: 10px;
+  font-family: "Avenir", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95.2%;
+  color: #ffffff;
+}
+
+.pagination__link:last-child {
+  margin-right: 0;
+}
+
+@media (min-width: 1000px) {
+  .pagination__link {
+    background: #264393;
+    font-size: 25px;
+  }
+}
+
+.pagination__link--is-active {
+  border: 1px solid #264393;
+  background: #fff;
+  color: #264393;
+}
+
+@media (min-width: 1000px) {
+  .pagination__link--is-active {
+    border: 1px solid #fff;
+  }
+}
+
+.pagination__arrow {
+  width: 15px;
+  height: 15px;
+}
+
 .footer {
   padding: 16px 15px 25px;
   background: radial-gradient(157.38% 59.19% at 50% 59.19%, #264393 0%, #1d295d 100%);
@@ -3499,6 +3590,90 @@ li {
   }
 }
 
+.catalog__section {
+  margin-bottom: 100px;
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .catalog__section {
+    display: block;
+  }
+}
+
+.m-catalog {
+  display: block;
+  margin-bottom: 78px;
+}
+
+@media (min-width: 1000px) {
+  .m-catalog {
+    display: none;
+  }
+}
+
+.m-catalog__title {
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+
+.m-sectoin__title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 110%;
+  color: #1d295d;
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+
+.m-sectoin__list {
+  margin-bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+}
+
+.m-sectoin__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 60px;
+  width: 100%;
+}
+
+.m-sectoin__item:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 480px) {
+  .m-sectoin__item {
+    width: 50%;
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
+.m-sectoin__link {
+  display: inline-block;
+  padding: 0 40px;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 110%;
+  color: #1d295d;
+}
+
 .col-catalog {
   display: none;
 }
@@ -3637,6 +3812,112 @@ li {
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
+}
+
+.categories {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .categories {
+    display: block;
+  }
+}
+
+.m-categories {
+  display: block;
+}
+
+@media (min-width: 1000px) {
+  .m-categories {
+    display: none;
+  }
+}
+
+.m-categories__title {
+  padding: 0 15px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 110%;
+  color: #1d295d;
+  margin-bottom: 20px;
+}
+
+.m-categories__preview {
+  padding: 0 15px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.m-categories__img {
+  padding: 0 15px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  width: 100%;
+  height: auto;
+}
+
+.block-info {
+  margin-bottom: 50px;
+  padding: 19px 22px 22px;
+  background: radial-gradient(157.38% 59.19% at 50% 59.19%, #264393 0%, #1d295d 100%);
+}
+
+@media (min-width: 1000px) {
+  .block-info {
+    margin-bottom: 100px;
+    padding: 18px 22px 46px;
+    background: #264393;
+    -webkit-box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.block-info__item {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1000px) {
+  .block-info__item {
+    margin-bottom: 30px;
+  }
+}
+
+.block-info__title {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 1000px) {
+  .block-info__title {
+    font-size: 30px;
+  }
+}
+
+.block-info__desc {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 130%;
+}
+
+@media (min-width: 1000px) {
+  .block-info__desc {
+    font-size: 16px;
+  }
 }
 
 .shading {
@@ -4209,7 +4490,7 @@ li {
   .news-wrap {
     background: none;
     padding: 0;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 }
 

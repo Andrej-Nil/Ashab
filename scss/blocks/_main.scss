@@ -346,6 +346,9 @@ li {
   @media (min-width: 700px) {
     margin: 0 20px 36px 0;
   }
+  @media (min-width: 1000px) {
+    margin: 0 0 36px 0;
+  }
   @media (min-width: 1280px) {
     margin: 0 20px 0 0;
     position: absolute;
@@ -391,23 +394,35 @@ li {
 }
 
 .desc-block__list {
-  padding-left: 47px;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
   line-height: 100%;
+  @media (min-width: 1280px) {
+    padding-left: 47px;
+  }
 }
 
 .desc-block__item {
   display: inline-block;
-  width: 178px;
-  margin: 0 20px 10px 0;
+  width: 49%;
+  margin: 0 0 10px 0;
+
+  @media (min-width: 1280px) {
+    width: 178px;
+    margin: 0 20px 10px 0;
+  }
 }
 .desc-block__img {
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
+  max-height: auto;
   border: 2px solid #9dcefc;
+  @media (min-width: 1280px) {
+    max-width: 300px;
+    max-height: 300px;
+  }
 }
 
 .desc-block__paragraph {
