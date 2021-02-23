@@ -147,6 +147,25 @@ li {
   top: auto;
 }
 
+.main-slider__item {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  transition: 0.2s ease-in-out;
+}
+
+.main-slider__item--is-active {
+  top: 0;
+  left: 0;
+}
+
+.main-slider__item--is-right {
+  top: 0;
+  left: -100%;
+}
+
 .col-content {
   width: 100%;
   //max-width: 844px;

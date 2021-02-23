@@ -5,6 +5,7 @@ const KEY_ESC = 27;
 const mobileSearchWrap = document.querySelector('#mobileSearchWrap');
 const mobileSearchBtn = document.querySelector('#searchBtn');
 const mainCarousel = document.querySelector('#mainCarousel');
+const reviews = document.querySelector('#reviews');
 const slider = document.querySelector('#slider');
 const mainBg = document.querySelector('.main-bg');
 const footer = document.querySelector('.footer');
@@ -21,7 +22,6 @@ const application = document.querySelector('#application'); // Онлайн за
 const applicationModal = document.querySelector('#applicationModal');// онлайн заявка(окно)
 const applicationThanks = document.querySelector('#applicationThanks');// успех(окно)
 const order = document.querySelector('#order') // заказ(окно)
-
 const orderForm = document.querySelector('#orderForm');
 const orderQuantityInput = document.querySelector('#orderQuantity');
 const incQuantityBtn = document.querySelector('#incQuantity');
@@ -96,63 +96,13 @@ mobileMenuOpenBtn.addEventListener('click', openMobileMenu);
 mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
 
 //Карусели
-// начало Главная карусель
 if (mainCarousel) {
-
-  const mainCarouselSlidesWrap = mainCarousel.querySelector('#mainCarouselSlidesWrap');
-  const mainCarouselSlides = mainCarousel.querySelectorAll('.m-c-slide');
-  const totalSlides = mainCarouselSlides.length;
-  let MainCarousel = 0;
-  const mainCarouselLeft = mainCarousel.querySelector('#mainCarouselLeft');
-  const mainCarouselRight = mainCarousel.querySelector('#mainCarouselRight');
-
-  //Добовляем события для управлению главной каруселью
-  mainCarouselRight.addEventListener('click', mainCarouselNextSlide);
-
-  mainCarouselLeft.addEventListener('click', mainCarouselPrevSlide);
-  // Управление сенсером 
-  // Начало движения
-  mainCarousel.addEventListener('touchstart', function (e) { startTouchMove(e) });
-  // Отслеживает путь и растояние
-  mainCarousel.addEventListener('touchmove', function (e) { touchMove(e) });
-  // Окончание движение
-  mainCarousel.addEventListener('touchend', function () { touchEnd(mainCarouselNextSlide, mainCarouselPrevSlide) });
-
-  //Адаптация карусели при изменении экрана
-  window.addEventListener(`resize`, () => {
-    const widthMainCarousel = getWidthEl(mainCarousel);
-    mainCarouselSlidesWrap.style.left = -widthMainCarousel * MainCarousel + 'px';
-  }, false);
-
-  //Управление каручеле стрелками
-  function mainCarouselNextSlide() {
-    const step = getWidthEl(mainCarousel);
-    if (MainCarousel == totalSlides - 1) {
-      mainCarouselSlidesWrap.style.left = 0;
-      MainCarousel = 0;
-      return
-    }
-    mainCarouselSlidesWrap.style.left = (parseInt(mainCarouselSlidesWrap.style.left, 10) - step) + 'px';
-    MainCarousel++;
-
-  }
-
-  function mainCarouselPrevSlide() {
-    const step = getWidthEl(mainCarousel);
-    if (MainCarousel == 0) {
-      mainCarouselSlidesWrap.style.left = - (step * (totalSlides - 1)) + 'px';
-      MainCarousel = 2;
-      return
-    }
-    mainCarouselSlidesWrap.style.left = (parseInt(mainCarouselSlidesWrap.style.left, 10)
-      + step) + 'px';
-    MainCarousel--;
-  }
-
-  //автолистание
-  setInterval(mainCarouselNextSlide, 10000)
+  mainSlider(mainCarousel, true);
 }
-//конец Главная карусель
+
+if (reviews) {
+  mainSlider(reviews)
+}
 
 //Начало slider
 if (slider) {
@@ -389,6 +339,72 @@ if (slider) {
   }
 }
 
+function mainSlider(el, autoplay) {
+
+  // слайды
+  let slides = el.querySelectorAll('.main-slider__item');
+  // индекс последнего слайда
+  const lastIdx = slides.length - 1;
+  //эл. управления
+  const reviewNext = el.querySelector('.main-slider__next');
+  const reviewPrev = el.querySelector('.main-slider__prev');
+
+  //добовляем активный класс
+  slides[0].classList.add('main-slider__item--is-active');
+  //добовляем который переносит слайде вправо от лнка карусели
+  slides[lastIdx].classList.add('main-slider__item--is-right');
+  // Вырезаем последний слай и ставим его вперед
+  slides[0].before(slides[lastIdx])
+  if (reviewNext) {
+    reviewNext.addEventListener('click', next);
+  }
+  if (reviewPrev) {
+    reviewPrev.addEventListener('click', prev);
+  }
+
+
+
+  //Начало движения
+  el.addEventListener('touchstart', function (e) { startTouchMove(e) });
+  // Отслеживает путь и растояние
+  el.addEventListener('touchmove', function (e) { touchMove(e) });
+  // Окончание движение
+  el.addEventListener('touchend', function () { touchEnd(next, prev) });
+
+  function prev() {
+    let slides = el.querySelectorAll('.main-slider__item');
+    slides[0].classList.remove('main-slider__item--is-right');
+    slides[0].classList.add('main-slider__item--is-active');
+    slides[1].classList.remove('main-slider__item--is-active');
+    setTimeout(() => {
+      slides[lastIdx].classList.add('main-slider__item--is-right');
+      slides[0].before(slides[lastIdx]);
+    }, 200)
+  }
+
+  function next() {
+    let slides = el.querySelectorAll('.main-slider__item');
+    slides[1].classList.remove('main-slider__item--is-active');
+    slides[1].classList.add('main-slider__item--is-right');
+
+    slides[2].classList.add('main-slider__item--is-active');
+
+    setTimeout(() => {
+      slides[0].classList.remove('main-slider__item--is-right');
+      slides[lastIdx].after(slides[0]);
+    }, 200)
+
+  }
+
+  if (autoplay) {
+    const interval = +el.getAttribute('data-interval') * 1000
+    console.log(interval)
+    setInterval(() => {
+      next()
+    }, interval)
+  }
+}
+
 // Запускаем видео
 function playMovie(el) {
   const parent = el.closest('.full-pic__item');
@@ -405,6 +421,10 @@ function stopMovie(el) {
 }
 
 //Конец slider
+
+
+
+
 
 // Управление каруселью сенсером
 // Начало движения

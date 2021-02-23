@@ -103,9 +103,9 @@
 
   </header>
   <!--main-carousel-->
-  <div id='mainCarousel' class='main-carousel m-c'>
-    <div id="mainCarouselSlidesWrap" class='m-c__slides' style="left: 0">
-      <div class="m-c-slide">
+  <div id='mainCarousel' data-interval='10' class='main-carousel m-c'>
+    <div id="mainCarouselSlidesWrap" class='m-c__slides main-slider'>
+      <div class="m-c-slide main-slider__item">
         <a href="#!" class="m-c__link">
           <div class="m-c-slide__content">
             <div class="m-c-slide__left">
@@ -131,7 +131,7 @@
           </div>
         </a>
       </div>
-      <div class="m-c-slide">
+      <div class="m-c-slide main-slider__item">
         <a href="#!" class="m-c__link">
           <div class="m-c-slide__content">
             <div class="m-c-slide__left">
@@ -157,7 +157,7 @@
           </div>
         </a>
       </div>
-      <div class="m-c-slide">
+      <div class="m-c-slide main-slider__item">
         <a href="#!" class="m-c__link">
           <div class="m-c-slide__content">
             <div class="m-c-slide__left">
@@ -183,8 +183,9 @@
         </a>
       </div>
     </div>
-    <img id='mainCarouselLeft' class='m-c__arrow m-c__left' src="./img/control/m-c-left.svg" alt="<">
-    <img id='mainCarouselRight' class='m-c__arrow m-c__right' src="./img/control/m-c-right.svg" alt=">">
+    <img id='mainCarouselLeft' class='m-c__arrow m-c__left main-slider__prev' src="./img/control/m-c-left.svg" alt="<">
+    <img id='mainCarouselRight' class='m-c__arrow m-c__right main-slider__next' src="./img/control/m-c-right.svg"
+      alt=">">
 
   </div>
   <!--main-carousel-->
@@ -835,45 +836,154 @@
             <!--faq-->
 
             <!--reviews-->
-            <div class="reviews">
+            <div id='reviews' class="reviews">
               <h2 class="section-title h2">Отзывы</h2>
               <div class="reviews-wrap">
-                <div class="review">
-                  <div class="review__content">
-                    <p class="review__auther">
-                      Виктор Белугин
-                    </p>
-                    <p class="review__text">
-                      Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
-                      Остались
-                      довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
-                      лист
-                      оцинкованный на забор, соответствует полностью. советуем
-                    </p>
-                  </div>
-                  <img src="./img/image/user-1.jpg" alt="" class="review__photo">
-                  </img>
-                </div>
+                <div class="review__slider main-slider">
+                  <div class="review__slide main-slider__item">
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин 1
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-1.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
 
-                <div class="review">
-                  <div class="review__content">
-                    <p class="review__auther">
-                      Виктор Белугин
-                    </p>
-                    <p class="review__text">
-                      Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
-                      Остались
-                      довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
-                      лист
-                      оцинкованный на забор, соответствует полностью. советуем
-                    </p>
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-2.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
                   </div>
-                  <img src="./img/image/user-2.jpg" alt="" class="review__photo">
-                  </img>
+                  <div class="review__slide main-slider__item">
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин 2
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-1.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
+
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-2.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
+                  </div>
+                  <div class="review__slide main-slider__item">
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин 3
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-1.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
+
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-2.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
+                  </div>
+                  <div class="review__slide main-slider__item">
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин 4
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-1.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
+
+                    <div class="review">
+                      <div class="review__content">
+                        <p class="review__auther">
+                          Виктор Белугин
+                        </p>
+                        <p class="review__text">
+                          Добрый день! Покупали в сентябре арматуру для фундамента,обслуживала менеджер Александра.
+                          Остались
+                          довольны качеством обслуживания, привезли быстро и все точно по накладной. Сейчас приобретаем
+                          лист
+                          оцинкованный на забор, соответствует полностью. советуем
+                        </p>
+                      </div>
+                      <img src="./img/image/user-2.jpg" alt="" class="review__photo">
+                      </img>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="review__btn-wrap sections__btn right-edge">
-                <span class=" light-btn">Показать еще</span>
+                <span id='reviewNext' class="main-slider__next light-btn">Показать еще</span>
               </div>
             </div>
             <!--reviews-->
