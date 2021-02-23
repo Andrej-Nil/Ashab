@@ -280,7 +280,8 @@
                   <div class="product-card__desc">
                     <div class="product-card__text">
                       <h3 class="product-card__title h3">
-                        <a href="stock-card.html" class="link">Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ
+                        <a class="product-card__link" href="stock-card.html" class="link">Труба холоднодеформированная
+                          16х2.5мм ст. 20 ГОСТ
                           8734</a>
                       </h3>
                       <p class='product-card__price'>
@@ -320,7 +321,8 @@
                   <div class="product-card__desc">
                     <div class="product-card__text">
                       <h3 class="product-card__title h3">
-                        <a href="stock-card.html" class="link">Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ
+                        <a class="product-card__link" href="stock-card.html" class="link">Труба холоднодеформированная
+                          16х2.5мм ст. 20 ГОСТ
                           8734</a>
                       </h3>
                       <p class='product-card__price'>
@@ -360,7 +362,8 @@
                   <div class="product-card__desc">
                     <div class="product-card__text">
                       <h3 class="product-card__title h3">
-                        <a href="stock-card.html" class="link">Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ
+                        <a class="product-card__link" href="stock-card.html" class="link">Труба холоднодеформированная
+                          16х2.5мм ст. 20 ГОСТ
                           8734</a>
                       </h3>
                       <p class='product-card__price'>
@@ -400,7 +403,8 @@
                   <div class="product-card__desc">
                     <div class="product-card__text">
                       <h3 class="product-card__title h3">
-                        <a href="stock-card.html" class="link">Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ
+                        <a class="product-card__link" href="stock-card.html" class="link">Труба холоднодеформированная
+                          16х2.5мм ст. 20 ГОСТ
                           8734</a>
                       </h3>
                       <p class='product-card__price'>
@@ -440,7 +444,8 @@
                   <div class="product-card__desc">
                     <div class="product-card__text">
                       <h3 class="product-card__title h3">
-                        <a href="stock-card.html" class="link">Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ
+                        <a class="product-card__link" href="stock-card.html" class="link">Труба холоднодеформированная
+                          16х2.5мм ст. 20 ГОСТ
                           8734</a>
                       </h3>
                       <p class='product-card__price'>
@@ -452,6 +457,7 @@
                     </div>
 
                     <div class="product-card__buy">
+
                       <button class="product-card__btn product-card__order dark-btn">
                         Заказать
                       </button>
@@ -1745,21 +1751,33 @@
         </div>
       </nav>
       <div class="f-content">
-        <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
-          <h4 class='f__title'>
-            Обратная связь
-          </h4>
-          <p class="f__error error empty">Заполните все поля</p>
-          <p class="f__error error phone">Неправильно указан номер</p>
-          <p class="f__error error mail">Неправильна указана почта</p>
-          <p class="f__success success ">Данные успешно отправлены</p>
-          <div class="callback-form__input-wrap">
-            <input class="callback-form__input input" type="text" placeholder="Ваше имя">
-            <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
-            <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
-            <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
-          </div>
-        </form>
+        <div id='callbackFormModal' class="callback-form__wrap">
+          <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
+            <div class="callback-close__wrap close">
+              <span class="close__word callback-close">
+                Закрыть
+              </span>
+              <img src="./img/control/close-modal.svg" alt="" class="close__icon callback-close">
+            </div>
+            <h4 class='f__title'>
+              Обратная связь
+            </h4>
+            <h4 class='callback-modal__title modal__title'>
+              Почти готово
+            </h4>
+            <p class='callback-modal__desc modal__desc'>Укажите ваш телефонный номер для звонка оператора</p>
+
+            <p class="f__error error empty">Заполните все поля</p>
+            <p class="f__error error phone">Неправильно указан номер</p>
+            <p class="f__error error mail">Неправильна указана почта</p>
+            <div class="callback-form__input-wrap">
+              <input class="callback-form__input input" type="text" placeholder="Ваше имя">
+              <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
+              <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
+              <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
+            </div>
+          </form>
+        </div>
 
         <div class="f-contacts">
           <h4 class='f__title'>

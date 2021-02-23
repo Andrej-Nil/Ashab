@@ -17,6 +17,9 @@
 .m-catalog__title {
   padding: 0 15px;
   margin-bottom: 20px;
+  @media (min-width: 1000px) {
+    display: none;
+  }
 }
 
 .m-sectoin__title {
