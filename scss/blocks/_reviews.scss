@@ -16,7 +16,8 @@
 .review__slider {
   position: relative;
   overflow: hidden;
-  height: 414px;
+  min-height: 414px;
+  height: 100%;
   width: 100%;
   display: flex;
 }

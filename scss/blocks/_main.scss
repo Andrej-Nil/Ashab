@@ -179,8 +179,13 @@ li {
 }
 
 .section-title {
+  display: flex;
+  flex-wrap: nowrap;
   padding: 0 15px;
   margin-bottom: 20px;
+  //@media (min-width: 1000px) {
+  //  display: block;
+  //}
   @media (min-width: 1280px) {
     padding: 0;
     margin-bottom: 40px;

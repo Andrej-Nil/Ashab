@@ -1438,7 +1438,7 @@
 
       <div class="f-content">
         <div id='callbackFormModal' class="callback-form__wrap">
-          <form id="callbackForm" action="" method="POST" class="f__form callback-form form">
+          <form id="callbackForm" action="send.html" method="POST" class="f__form callback-form form">
             <div class="callback-close__wrap close">
               <span class="close__word callback-close">
                 Закрыть
@@ -1454,12 +1454,16 @@
             <p class='callback-modal__desc modal__desc'>Укажите ваш телефонный номер для звонка оператора</p>
 
             <p class="f__error error empty">Заполните все поля</p>
+            <p class="f__error error no-send">Произошла ошибка, данные не отправлены, вы можете связаться с нами по
+              телефону 8 (421) 292-97-86 или по почте hab@metall-as.ru</p>
             <p class="f__error error phone">Неправильно указан номер</p>
             <p class="f__error error mail">Неправильна указана почта</p>
             <div class="callback-form__input-wrap">
-              <input class="callback-form__input input" type="text" placeholder="Ваше имя">
-              <input class="callback-form__input input" data-type='tel' type="text" placeholder="Ваш телефон">
-              <input class="callback-form__input input" data-type="email" type="text" placeholder="Ваша почта">
+              <input name='name' class="callback-form__input input" type="text" data-type='name' placeholder="Ваше имя">
+              <input name='tel' class="callback-form__input input" data-type='tel' type="text"
+                placeholder="Ваш телефон">
+              <input name='mail' class="callback-form__input input" data-type="email" type="text"
+                placeholder="Ваша почта">
               <input class="callback-form__submit submit-form light-btn" type="submit" value="Оставить заявку">
             </div>
           </form>
@@ -1619,16 +1623,18 @@
         <h4 class="modal__title">Почти готово!</h4>
         <p class="modal__desc">Укажите вашу электронную почту для связи с нами </p>
 
-        <form id='applicationForm' class='modal__form form' action="" method="POST">
+        <form id='applicationForm' class='modal__form form' action="send.html" method="POST">
           <div class="modal__message">
             <p class="modal__error error empty">Заполните поле</p>
+            <p class="modal__error error no-send">Произошла ошибка, данные не отправлены, вы можете связаться с нами по
+              телефону 8 (421) 292-97-86 или по почте hab@metall-as.ru</p>
             <p class="modal__error error phone">Неправильно указан номер</p>
           </div>
           <div class="modal__inputs">
-            <input class="modal__input input" data-type="tel" type="text" placeholder="+7 000-000-00-00">
+            <input id='applicationTel' name='phone' class="modal__input input" data-type="tel" type="text"
+              placeholder="+7 000-000-00-00">
             <input class="modal__submit light-btn" type="submit" value="Отправить">
           </div>
-
         </form>
       </div>
     </div>
@@ -1658,7 +1664,7 @@
 
 
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-  <script src='./js/main.js' type="text/javascript"></script>
+  <script src='./js/main.js'></script>
 </body>
 
 </html>

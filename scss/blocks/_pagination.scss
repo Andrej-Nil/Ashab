@@ -37,6 +37,16 @@
   @media (min-width: 1000px) {
     background: #264393;
     font-size: 25px;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background: #9dcefc;
+    }
+  }
+}
+
+.pagination__link--no-hover {
+  &:hover {
+    background: #264393;
   }
 }
 

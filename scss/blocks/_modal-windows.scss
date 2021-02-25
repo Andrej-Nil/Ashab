@@ -358,6 +358,7 @@
 }
 
 .order-modal__total-price {
+  display: inline-block;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -376,7 +377,8 @@
 }
 
 .order-modal__price {
-  //display: inline-block;
+  display: inline-block;
+  word-wrap: nowrap;
   padding-left: 10px;
   font-size: 40px;
   line-height: 100%;

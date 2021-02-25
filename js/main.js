@@ -4,6 +4,7 @@ const body = document.querySelector('body');
 const KEY_ESC = 27;
 const mobileSearchWrap = document.querySelector('#mobileSearchWrap');
 const mobileSearchBtn = document.querySelector('#searchBtn');
+const elWithScrollX = document.querySelector('.sections-list');
 const mainCarousel = document.querySelector('#mainCarousel');
 const reviews = document.querySelector('#reviews');
 const slider = document.querySelector('#slider');
@@ -19,6 +20,7 @@ const bgModal = document.querySelector('#shading'); // темный фон ок�
 const faqModal = document.querySelector('#faqModal'); // темный фон faqModalBg
 const closeFaqBtns = document.querySelectorAll('.close-faq-btn');
 const application = document.querySelector('#application'); // Онлайн заявка(btn)
+const applicationForm = document.querySelector('#applicationForm'); // Онлайн заявка(btn)
 const applicationModal = document.querySelector('#applicationModal');// онлайн заявка(окно)
 const applicationThanks = document.querySelector('#applicationThanks');// успех(окно)
 const order = document.querySelector('#order') // заказ(окно)
@@ -28,6 +30,7 @@ const incQuantityBtn = document.querySelector('#incQuantity');
 const decQuantityBtn = document.querySelector('#decQuantity');
 const orderPrice = document.querySelector('#orderPrice');
 const orderBtns = document.querySelectorAll('.product-card__btn'); // заказ(btn);
+const faqForm = document.querySelector('#faqForm');
 const faqFormBtn = document.querySelector('#faqFormBtn'); // faq-form (btn)
 const dropdownWraps = document.querySelectorAll('.dropdown-wrap');
 const mobileMenu = document.querySelector('#mobileNav');
@@ -66,14 +69,29 @@ function goUp() {
 }
 
 // Добовляем функции для проверки form
-Array.from(forms).forEach((form) => {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formCheck(form);
-  });
+//Array.from(forms).forEach((form) => {
+//  form.addEventListener('submit', (e) => {
+//    e.preventDefault();
+//    formCheck(form);
+//  });
+//});
+
+applicationForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  applicationFormCheck();
 });
 
+callbackForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  callbackFormCheck();
+});
 
+if (faqForm) {
+  faqForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    faqFormCheck()
+  })
+}
 if (order) {
   //Добовляем функции для проверки формы
   orderForm.addEventListener('submit', (e) => {
@@ -101,7 +119,13 @@ if (mainCarousel) {
 }
 
 if (reviews) {
+  setHeightreviewSlide()
   mainSlider(reviews)
+  window.addEventListener(`resize`, () => {
+    setHeightreviewSlide()
+  }, false);
+
+
 }
 
 //Начало slider
@@ -342,6 +366,7 @@ if (slider) {
 function mainSlider(el, autoplay) {
 
   // слайды
+
   let slides = el.querySelectorAll('.main-slider__item');
   // индекс последнего слайда
   const lastIdx = slides.length - 1;
@@ -398,7 +423,6 @@ function mainSlider(el, autoplay) {
 
   if (autoplay) {
     const interval = +el.getAttribute('data-interval') * 1000
-    console.log(interval)
     setInterval(() => {
       next()
     }, interval)
@@ -421,9 +445,6 @@ function stopMovie(el) {
 }
 
 //Конец slider
-
-
-
 
 
 // Управление каруселью сенсером
@@ -628,14 +649,153 @@ function setValueCountInput(value) {
   orderPrice.innerHTML = totalPrice(price, inputValue).toLocaleString();
 }
 
-//Проверка форм
-function formCheck(form) {
-  // Очещаем ошибки
-  hideErrorMessages(form);
-  // проверка значение инпутов
-  inputsCheck(form);
+
+function applicationFormCheck() {
+  hideErrorMessages(applicationForm);
+  applicationInputsCheck();
 }
 
+function applicationInputsCheck() {
+  const error = applicationForm.querySelector('.phone')
+  const inputs = applicationForm.querySelectorAll('input');
+  const applicationTel = applicationForm.querySelector('#applicationTel')
+  const value = applicationTel.value
+  const success = regexСheck(value, regTel);
+  if (isEmptyValue(inputs, applicationForm)) {
+    return;
+  }
+  if (success) {
+    applicationFormSend()
+  } else {
+    error.classList.add('error--is-show');
+  }
+}
+
+function applicationFormSend() {
+  const formData = new FormData(applicationForm);
+  const xhr = new XMLHttpRequest();
+
+  xhr.open("POST", applicationForm.action);
+  xhr.send(formData);
+
+  xhr.onload = function () {
+    if (xhr.status != 200) {
+      noSend(applicationForm);
+      console.log('Ошибка: ' + xhr.status);
+      return;
+    } else {
+      let response = JSON.parse(xhr.response);
+      if (response == 1) {
+        applicationThanks.classList.add('modal--is-show');
+        applicationModal.classList.remove('modal--is-show');
+        clearInputs(inputs);
+        console.log("Форма отправилась");
+      } else {
+        noSend(applicationForm);
+        console.log("Неудачная отправка");
+      }
+    }
+  };
+
+  xhr.onerror = function () {
+    console.log('Неудачная отправка');
+  };
+
+}
+
+function callbackFormCheck() {
+  hideErrorMessages(callbackForm);
+  callbackInputsCheck();
+}
+
+function callbackInputsCheck() {
+  const inputs = callbackForm.querySelectorAll('input');
+  const success = valueCheck(inputs, callbackForm);
+  if (success) {
+    callbackFormSend()
+  }
+}
+
+function callbackFormSend() {
+  const formData = new FormData(callbackForm);
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", callbackForm.action);
+  xhr.send(formData);
+  xhr.onload = function () {
+    if (xhr.status != 200) {
+      noSend(callbackForm);
+      console.log('Ошибка: ' + xhr.status);
+      return;
+    } else {
+      let response = JSON.parse(xhr.response);
+      if (response == 1) {
+        bgModal.classList.add('shading--is-show')
+        applicationThanks.classList.add('modal--is-show');
+        callbackFormModal.classList.remove('callback-form__wrap--is-show')
+        console.log("Форма отправилась");
+        clearInputs(inputs);
+      } else {
+        noSend(callbackForm);
+        console.log("Неудачная отправка");
+      }
+    }
+  };
+
+  xhr.onerror = function () {
+    console.log('Неудачная отправка');
+  };
+}
+
+function faqFormCheck() {
+  hideErrorMessages(faqForm);
+  faqInputsCheck();
+}
+function faqInputsCheck() {
+  const error = faqForm.querySelector('.mail')
+  const inputs = faqForm.querySelectorAll('input');
+  const faqMailInput = faqForm.querySelector('#faqMail');
+  const value = faqMailInput.value;
+  const success = regexСheck(value, regMail);
+  if (isEmptyValue(inputs, faqForm)) {
+    return;
+  }
+  if (success) {
+    faqFormSend();
+  } else {
+    error.classList.add('error--is-show');
+  }
+}
+
+function faqFormSend() {
+  const formData = new FormData(faqForm);
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", faqForm.action);
+  xhr.send(formData);
+  xhr.onload = function () {
+    if (xhr.status != 200) {
+      noSend(faqForm);
+      console.log('Ошибка: ' + xhr.status);
+      return;
+    } else {
+      let response = JSON.parse(xhr.response);
+      if (response == 1) {
+        const faqThanks = bgModal.querySelector('#faqThanks');
+        bgModal.classList.add('shading--is-show');
+        faqThanks.classList.add('modal--is-show');
+        faqModal.classList.remove('modal--is-show');
+        clearInputs(inputs);
+        console.log("Форма отправилась");
+      } else {
+        noSend(faqForm);
+        console.log("Неудачная отправка");
+      }
+    }
+  };
+
+  xhr.onerror = function () {
+    console.log('Неудачная отправка');
+  };
+}
 function orderFormCheck() {
   hideErrorMessages(orderForm);
   orderInputsCheck();
@@ -673,51 +833,47 @@ function orderInputsCheck() {
   }
 
   if (resCheck) {
-    clearInputs(orderFormInputs);
-    order.classList.remove('modal--is-show');
-    applicationThanks.classList.add('modal--is-show');
-  }
-}
+    sendOrderForm()
 
-//Проверка инпутов
-function inputsCheck(form) {
-  const inputs = form.querySelectorAll('.input');
-  // Если есть пустое поле выдаем ошибку, останавливаем проверку
-  if (isEmptyValue(inputs, form)) {
-    return;
+
   }
 
-  const success = isValidValue(inputs, form);
-  // Если проверка успешна, то вывести сообщение о успехе и очистить инпуты
-  if (success) {
-    if (form.id === "callbackForm") {
-      bgModal.classList.add('shading--is-show')
-      applicationThanks.classList.add('modal--is-show');
-      clearInputs(inputs);
-      callbackModalClose();
-      return;
-    }
 
-    if (form.id === "applicationForm") {
-      applicationThanks.classList.add('modal--is-show');
-      applicationModal.classList.remove('modal--is-show')
-      clearInputs(inputs);
-      return;
-    }
+  function sendOrderForm() {
+    const formData = new FormData(orderForm);
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", orderForm.action);
+    xhr.send(formData);
+    xhr.onload = function () {
+      if (xhr.status != 200) {
+        noSend(orderForm);
+        console.log('Ошибка: ' + xhr.status);
+        return;
+      } else {
+        let response = JSON.parse(xhr.response);
+        if (response == 1) {
+          order.classList.remove('modal--is-show');
+          applicationThanks.classList.add('modal--is-show');
+          console.log("Форма отправилась");
+          clearInputs(orderFormInputs);
+        } else {
+          noSend(orderForm);
+          console.log("Неудачная отправка");
+        }
+      }
+    };
 
-    if (form.id === "faqForm") {
-      const faqThanks = bgModal.querySelector('#faqThanks');
-      bgModal.classList.add('shading--is-show');
-      faqThanks.classList.add('modal--is-show');
-      faqModal.classList.remove('modal--is-show')
-      console.log(applicationThanks)
-      clearInputs(inputs);
-      return;
-    }
+    xhr.onerror = function () {
+      console.log('Неудачная отправка');
+    };
 
   }
 }
 
+function noSend(form) {
+  const errorMessage = form.querySelector('.no-send');
+  errorMessage.classList.add('error--is-show');
+}
 
 // Провекрка на пустое значение инпута
 function isEmptyValue(inputs, form) {
@@ -732,11 +888,6 @@ function isEmptyValue(inputs, form) {
   return isEmpty;
 }
 
-// Возвращает резулитат проверки
-function isValidValue(inputs, form) {
-  return valueCheck(inputs, form);
-}
-
 
 // Проверка на регулярным выражением
 function regexСheck(value, reg) {
@@ -746,7 +897,6 @@ function regexСheck(value, reg) {
 // Прячем сообщения с ошибками
 function hideErrorMessages(form) {
   const errorMessage = form.querySelectorAll('.error');
-
   Array.from(errorMessage).forEach((el) => {
     el.classList.remove('error--is-show');
   })
@@ -770,6 +920,11 @@ function valueCheck(inputs, form) {
         }
         break;
       };
+      case 'name': {
+        isSuccess = true;
+        break;
+      };
+
       case 'email': {
         const value = el.value;
         isSuccess = isSuccess && regexСheck(value, regMail);
@@ -778,7 +933,6 @@ function valueCheck(inputs, form) {
         }
         break;
       };
-      default: isSuccess = true;
     }
   })
 
@@ -788,6 +942,9 @@ function valueCheck(inputs, form) {
 //Очищаем инпуты
 function clearInputs(inputs) {
   Array.from(inputs).forEach((el) => {
+    if (el.type === 'submit') {
+      return;
+    }
     el.value = '';
   })
 }
@@ -875,6 +1032,13 @@ function decrease() {
   }
 
   orderPrice.innerHTML = totalPrice(price, quantity).toLocaleString();
+}
+
+function setHeightreviewSlide() {
+  const reviewsSlidesWrap = reviews.querySelector('.review__slider')
+  const reviewsSlide = reviews.querySelector('.review__slide')
+  const heightSlide = reviewsSlide.offsetHeight;
+  reviewsSlidesWrap.style.height = heightSlide + 'px';
 }
 
 //умножает в возвращает результат
