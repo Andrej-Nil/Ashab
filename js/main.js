@@ -710,8 +710,28 @@ function callbackFormCheck() {
 
 function callbackInputsCheck() {
   const inputs = callbackForm.querySelectorAll('input');
-  const success = valueCheck(inputs, callbackForm);
-  if (success) {
+  const phoneEroor = callbackForm.querySelector('.phone');
+  const mailEroor = callbackForm.querySelector('.mail');
+  const callbackTel = callbackForm.querySelector('#callbackTel');
+  const callbackMail = callbackForm.querySelector('#callbackMail');
+  let validEmail = true;
+  let validTel = true;
+
+  if (isEmptyValue(inputs, callbackForm)) {
+    return;
+  }
+
+  if (!regexСheck(callbackTel.value, regTel)) {
+    phoneEroor.classList.add('error--is-show');
+    validTel = false;
+  }
+
+  if (!regexСheck(callbackMail.value, regMail)) {
+    mailEroor.classList.add('error--is-show');
+    validEmail = false;
+  }
+
+  if (validEmail && validTel) {
     callbackFormSend()
   }
 }
@@ -902,43 +922,6 @@ function hideErrorMessages(form) {
   })
 }
 
-
-//Проверка занчение, если все значение прошли проверку
-// Возвращает true иначи false
-function valueCheck(inputs, form) {
-  const phoneEroor = form.querySelector('.phone');
-  const mailEroor = form.querySelector('.mail');
-  let isSuccess = true;
-  Array.from(inputs).forEach((el) => {
-    const dataType = el.getAttribute('data-type');
-    switch (dataType) {
-      case 'tel': {
-        const value = el.value;
-        isSuccess = isSuccess && regexСheck(value, regTel);
-        if (!isSuccess) {
-          phoneEroor.classList.add('error--is-show');
-        }
-        break;
-      };
-      case 'name': {
-        isSuccess = true;
-        break;
-      };
-
-      case 'email': {
-        const value = el.value;
-        isSuccess = isSuccess && regexСheck(value, regMail);
-        if (!isSuccess) {
-          mailEroor.classList.add('error--is-show');
-        }
-        break;
-      };
-    }
-  })
-
-  return isSuccess;
-}
-
 //Очищаем инпуты
 function clearInputs(inputs) {
   Array.from(inputs).forEach((el) => {
@@ -948,7 +931,6 @@ function clearInputs(inputs) {
     el.value = '';
   })
 }
-
 
 // яндеск карта
 const yandexmap = document.querySelector('#yandexmap'); // блок отображающий карту
