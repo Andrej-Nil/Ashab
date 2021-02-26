@@ -67,14 +67,9 @@ function goUp() {
     timeOut = setTimeout('goUp()', 5);
   } else clearTimeout(timeOut);
 }
-
-// Добовляем функции для проверки form
-//Array.from(forms).forEach((form) => {
-//  form.addEventListener('submit', (e) => {
-//    e.preventDefault();
-//    formCheck(form);
-//  });
-//});
+// Обрезаем длину ссылок в популярных разделай 
+strLength('sections-card__link-item', 20);
+//strLength('sections-card__title', 34);
 
 applicationForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -1026,4 +1021,19 @@ function setHeightreviewSlide() {
 //умножает в возвращает результат
 function totalPrice(numA, numB) {
   return numA * numB;
+}
+
+
+// Обрезает строку если больше указаной length
+function strLength(classEl, length) {
+  const els = document.querySelectorAll('.' + classEl);
+  Array.from(els).forEach((el) => {
+    const str = el.innerHTML.trim();
+
+    if (str.length >= length) {
+      const newStr = str.substr(0, length) + '...';
+      el.innerHTML = newStr;
+    }
+  });
+
 }

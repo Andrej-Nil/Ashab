@@ -52,9 +52,11 @@
 
 .sections-card__desc {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 156px;
   height: 132px;
-  padding: 16px 10px 0;
+  padding: 0 8px 0;
   margin-left: auto;
   background: radial-gradient(
     183.91% 99.76% at 50% 0.24%,
@@ -64,23 +66,27 @@
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
   @media (min-width: 1000px) {
     background: #264393;
-    padding: 13px 16px 0 16px;
+    padding: 0 10px 0 16px;
     min-width: 240px;
     width: 240px;
-    height: 243px;
+    height: 250px;
   }
 }
 
 .sections-card__title {
   font-family: "Roboto", sans-serif;
   font-style: normal;
+  display: flex;
+  align-items: center;
+  line-height: 110%;
   font-weight: 300;
   font-size: 14px;
-  line-height: 110%;
-  display: block;
+  line-height: 90%;
   margin-bottom: 20px;
+  min-height: 65px;
   @media (min-width: 1000px) {
     font-size: 20px;
+    min-height: 75px;
   }
 }
 
@@ -109,7 +115,7 @@
 
 .sections-card__list {
   display: none;
-  margin-bottom: 30px;
+  overflow: hidden;
   @media (min-width: 1000px) {
     display: block;
   }
@@ -124,6 +130,7 @@
 
 .sections-card__link-item {
   font-family: "Roboto", sans-serif;
+  white-space: nowrap;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -132,18 +139,20 @@
 
 .sections-card__link {
   display: none;
+  display: inline-block;
   align-items: center;
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
   line-height: 110%;
   color: #9dcefc;
+  margin: auto 0 5px 0;
   @media (min-width: 1000px) {
     display: flex;
   }
 }
 
 .sections-card__arrow {
-  margin-left: auto;
+  margin: 0 10px 0 auto;
 }

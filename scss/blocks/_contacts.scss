@@ -97,28 +97,21 @@
 .contact__map {
   position: relative;
   z-index: 100;
-
-  height: 100%;
   min-height: 296px;
-
   @media (min-width: 1000px) {
-    max-width: 600px;
     width: 100%;
   }
   @media (min-width: 1280px) {
     min-width: 407px;
     max-width: 407px;
-    min-height: 296px;
   }
 }
 .map__img {
   max-width: 407px;
   width: 100%;
   height: 100%;
-  border: 2px solid #9dcefc;
+  min-height: 296px;
   @media (min-width: 1280px) {
-    min-width: 407px;
-    max-width: 407px;
     min-height: 296px;
   }
 }
@@ -127,5 +120,4 @@
   position: absolute;
   top: 99px;
   left: 193px;
-  //transform: translate(-20%, 0);
 }
