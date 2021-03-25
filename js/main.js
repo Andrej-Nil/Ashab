@@ -111,13 +111,16 @@ mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
 //Карусели
 if (mainCarousel) {
   mainSlider(mainCarousel, true);
+  window.addEventListener(`resize`, () => {
+    setHeadingSlider();
+  }, false);
 }
 
 if (reviews) {
   setHeightreviewSlide()
   mainSlider(reviews)
   window.addEventListener(`resize`, () => {
-    setHeightreviewSlide()
+    setHeightreviewSlide();
   }, false);
 
 
@@ -156,6 +159,8 @@ if (slider) {
   window.addEventListener(`resize`, () => {
     setBgModalHeight(fullPicSlider);
   }, false);
+
+
 
   arrowPrev.addEventListener('click', prevSlide);
   arrowNext.addEventListener('click', nextSlide);
@@ -359,22 +364,49 @@ if (slider) {
 }
 
 function mainSlider(el, autoplay) {
-
+  let moving = false;
   // слайды
-
+  console.log(el);
   let slides = el.querySelectorAll('.main-slider__item');
+  let newSlides = null;
+  let newLastIdx = null;
+
   // индекс последнего слайда
   const lastIdx = slides.length - 1;
   //эл. управления
   const reviewNext = el.querySelector('.main-slider__next');
   const reviewPrev = el.querySelector('.main-slider__prev');
 
-  //добовляем активный класс
-  slides[0].classList.add('main-slider__item--is-active');
-  //добовляем который переносит слайде вправо от лнка карусели
-  slides[lastIdx].classList.add('main-slider__item--is-right');
-  // Вырезаем последний слай и ставим его вперед
-  slides[0].before(slides[lastIdx])
+
+  if (slides.length < 3) {
+    let firstSlideCopy = slides[0].cloneNode(true);
+    let lastSlideCopy = slides[lastIdx].cloneNode(true);
+    slides[lastIdx].after(firstSlideCopy);
+    slides[0].before(lastSlideCopy);
+
+    newSlides = el.querySelectorAll('.main-slider__item');
+    newLastIdx = newSlides.length - 1;
+    //добовляем активный класс
+    newSlides[1].classList.add('main-slider__item--is-active');
+    //добовляем который переносит слайде вправо от лнка карусели
+    newSlides[0].classList.add('main-slider__item--is-right');
+    // Вырезаем последний слай и ставим его вперед
+  } else {
+
+    slides[0].before(slides[lastIdx]);
+
+    newSlides = el.querySelectorAll('.main-slider__item');
+    newLastIdx = newSlides.length - 1;
+    newSlides[0].classList.add('main-slider__item--is-right');
+    newSlides[1].classList.add('main-slider__item--is-active');
+    //добовляем который переносит слайде вправо от лнка карусели
+
+  }
+
+  setHeadingSlider()
+
+
+
   if (reviewNext) {
     reviewNext.addEventListener('click', next);
   }
@@ -392,26 +424,39 @@ function mainSlider(el, autoplay) {
   el.addEventListener('touchend', function () { touchEnd(next, prev) });
 
   function prev() {
+    if (moving) {
+      return;
+    }
+    moving = true;
     let slides = el.querySelectorAll('.main-slider__item');
     slides[0].classList.remove('main-slider__item--is-right');
     slides[0].classList.add('main-slider__item--is-active');
     slides[1].classList.remove('main-slider__item--is-active');
+    setHeadingSlider()
     setTimeout(() => {
-      slides[lastIdx].classList.add('main-slider__item--is-right');
-      slides[0].before(slides[lastIdx]);
+      slides[newLastIdx].classList.add('main-slider__item--is-right');
+      slides[0].before(slides[newLastIdx]);
+      moving = false;
     }, 200)
+
+
   }
 
   function next() {
+    if (moving) {
+      return
+    }
+    moving = true;
     let slides = el.querySelectorAll('.main-slider__item');
-    slides[1].classList.remove('main-slider__item--is-active');
+
     slides[1].classList.add('main-slider__item--is-right');
-
+    slides[1].classList.remove('main-slider__item--is-active');
     slides[2].classList.add('main-slider__item--is-active');
-
+    setHeadingSlider()
     setTimeout(() => {
       slides[0].classList.remove('main-slider__item--is-right');
-      slides[lastIdx].after(slides[0]);
+      slides[newLastIdx].after(slides[0]);
+      moving = false;
     }, 200)
 
   }
@@ -422,6 +467,7 @@ function mainSlider(el, autoplay) {
       next()
     }, interval)
   }
+
 }
 
 // Запускаем видео
@@ -1016,6 +1062,12 @@ function setHeightreviewSlide() {
   const reviewsSlide = reviews.querySelector('.review__slide')
   const heightSlide = reviewsSlide.offsetHeight;
   reviewsSlidesWrap.style.height = heightSlide + 'px';
+}
+
+function setHeadingSlider() {
+  let activeSlide = mainCarousel.querySelector('.main-slider__item--is-active');
+  let heightActiveSlide = activeSlide.clientHeight;
+  mainCarousel.style.height = heightActiveSlide + 'px'
 }
 
 //умножает в возвращает результат
