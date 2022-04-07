@@ -1,0 +1,208 @@
+.basket {
+  padding: 0 15px;
+  margin-bottom: 50px;
+  @media (min-width: 1000px) {
+    padding: 0;
+  }
+}
+
+.basket__empty {
+  font-size: 24px;
+  color: #fff;
+}
+
+.basket-card {
+  position: relative;
+
+  padding: 10px;
+  background-color: #264393;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  @media (min-width: 535px) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+.basket-card__remove {
+  background: #fff;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  @media (min-width: 400px) {
+  }
+}
+.basket-card__remove-img {
+  width: 100%;
+}
+.basket-card__preview {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  @media (min-width: 535px) {
+    margin: 0 10px 0 0;
+    min-width: 100px;
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.basket-card__img {
+  margin: 0 10px 0 0;
+  width: 60px;
+  @media (min-width: 535px) {
+    width: 100%;
+  }
+}
+
+.basket-card__title-mob {
+  width: 100%;
+  padding-right: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  @media (min-width: 535px) {
+    display: none;
+  }
+}
+
+.basket-card__body {
+  flex-grow: 1;
+  @media (min-width: 400px) {
+    //padding: 25px 0 0 0;
+  }
+  @media (min-width: 1000px) {
+    padding: 0;
+  }
+}
+.basket-card__title {
+  display: none;
+  font-size: 19px;
+  margin-bottom: 15px;
+  @media (min-width: 535px) {
+    display: block;
+  }
+  @media (min-width: 1000px) {
+    max-width: 350px;
+  }
+  @media (min-width: 1280px) {
+    max-width: 620px;
+  }
+}
+
+.basket-card__link {
+  color: #fff;
+}
+.basket-card__price {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.basket-card__msg {
+  display: none;
+  color: #1d295d;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.basket-card__msg--is-show {
+  display: block;
+}
+
+.basket-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.basket-card__counter {
+  margin-bottom: 0;
+  margin-right: 20px;
+}
+
+.basket-card__counter-input {
+  height: 40px;
+  padding: 7px 10px;
+  margin-bottom: 0;
+  width: 100px;
+  @media (min-width: 400px) {
+    padding: 10px 10px;
+  }
+}
+
+.basket-card__counter-btn {
+  height: 40px;
+  background: #fff;
+}
+.basket-card__add {
+  display: flex;
+}
+
+.basket-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 15px;
+  background-color: #264393;
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
+}
+
+.basket-info__col {
+  width: 100%;
+  margin-bottom: 20px;
+  @media (min-width: 700px) {
+    width: 48%;
+  }
+}
+
+.basket-making__title {
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.basket-making__total {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.basket-making__total-num {
+  font-weight: 600;
+  font-size: 25px;
+  color: #fff;
+}
+
+.basket-form__title {
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.basket-form__message {
+  display: none;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+.basket-form__message--is-show {
+  display: block;
+}
+
+.basket-form__input {
+  border: 2px solid rgba(255, 255, 255, 0);
+  margin-bottom: 15px;
+  transition: 0.2s ease-in-out;
+}
+
+.basket-form__input--is-error {
+  border: 2px solid #ff0000;
+}
+
+.basket-form__submit {
+  width: 100%;
+}

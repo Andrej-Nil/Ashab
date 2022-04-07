@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="ZYewKxsyeZQZzCbk3nqx2CTCQswQ69AEfpvrIw3k">
   <link rel="stylesheet" href='./css/style.min.css'>
   <title>Ashab.ru</title>
 </head>
@@ -143,58 +144,6 @@
               <div class="m-c-slide__text-wrap">
                 <p class="m-c-slide__text">
                   <span class='slide__text-one'>1502</span> <span class="slide__text-two">тонн</span>
-                </p>
-                <p class="m-c-slide__text">
-
-                  металлопроката всегда в наличии
-                </p>
-              </div>
-            </div>
-
-            <div class="m-c-slide__right">
-              <img src="./img/image/m-c-right.png" alt="" class="m-c-slide__img m-c-slide--right">
-            </div>
-
-          </div>
-        </a>
-      </div>
-      <div class="m-c-slide main-slider__item">
-        <a href="#!" class="m-c__link">
-          <div class="m-c-slide__content">
-            <div class="m-c-slide__left">
-              <img src="./img/image/m-c-left.png" alt="" class="m-c-slide__img">
-            </div>
-
-            <div class="m-c-slide__center">
-              <div class="m-c-slide__text-wrap">
-                <p class="m-c-slide__text">
-                  <span class='slide__text-one'>1503</span> <span class="slide__text-two">тонн</span>
-                </p>
-                <p class="m-c-slide__text">
-
-                  металлопроката всегда в наличии
-                </p>
-              </div>
-            </div>
-
-            <div class="m-c-slide__right">
-              <img src="./img/image/m-c-right.png" alt="" class="m-c-slide__img m-c-slide--right">
-            </div>
-
-          </div>
-        </a>
-      </div>
-      <div class="m-c-slide main-slider__item">
-        <a href="#!" class="m-c__link">
-          <div class="m-c-slide__content">
-            <div class="m-c-slide__left">
-              <img src="./img/image/m-c-left.png" alt="" class="m-c-slide__img">
-            </div>
-
-            <div class="m-c-slide__center">
-              <div class="m-c-slide__text-wrap">
-                <p class="m-c-slide__text">
-                  <span class='slide__text-one'>1504</span> <span class="slide__text-two">тонн</span>
                 </p>
                 <p class="m-c-slide__text">
 
@@ -471,9 +420,13 @@
               <h2 class="section-title h2">Акции и предложения</h2>
 
               <div class="products__wrap">
-                <div class="product-card">
-                  <div class="product-card__img-wrap"><img src="./img/image/product-img.jpg" alt=""
-                      class="product-card__img">
+
+                <div id='00' class="product-card" data-product-card>
+                  <div class="product-card__img-wrap">
+                    <div class="product-card__sticker sticker-sale">
+                      SALE
+                    </div>
+                    <img src="./img/image/product-img.jpg" alt="" class="product-card__img">
                   </div>
 
                   <div class="product-card__desc">
@@ -484,33 +437,40 @@
                           8734</a>
                       </h3>
                       <p class='product-card__price'>
-                        Цена за штуку:
+                        Цена:
                         <span class="product-card__price--blue">
                           65 000
                         </span>
                       </p>
                     </div>
-
                     <div class="product-card__buy">
-                      <div class="product-card__sticker sticker-sale">
-                        SALE
+                      <div class="product-card__add">
+
+                        <span class='product-card__add-item' data-id="00" data-link="./test-ajax/in-favorite.json"
+                          data-add-favorite>
+                          <img data-img-favorite src="./img/icon/favorite-icon.svg" alt=""
+                            class="product-card__item-img">
+                        </span>
+
+                        <span class='product-card__add-item product-card__add-basket' data-id="00"
+                          data-link="./test-ajax/in-basket.json" data-add-basket>
+                          <img data-img-basket src="./img/icon/basket-icon.svg" alt="" class="product-card__item-img">
+                        </span>
+
+                        <button class="mobile-product-card__in-basket dark-btn" data-id="00"
+                          data-link="./test-ajax/in-basket.json" data-add-basket data-btn-basket>
+                          В корзину
+                        </button>
                       </div>
 
-                      <button class="product-card__btn product-card__order dark-btn">
+                      <button class="product-card__btn product-card__order dark-btn" data-id="00"
+                        data-link="./test-ajax/in-basket.json" data-fast-order>
                         Заказать
                       </button>
-                    </div>
-
-                    <div class="buy-mobile">
-                      <p class="buy-mobile__price">
-                        65 000 <span class="buy-mobile__curenncy">₽</span>
-                      </p>
-
-                      <div class=" buy-mobile__order">
-                        <div class="buy-mobile__btn product-card__btn">
-                          <img src="./img/icon/basket-icon.svg" alt="" class="buy-mobile__icon">
-                        </div>
-                      </div>
+                      <button class="product-card__btn mobile-product-card__order dark-btn" data-id="00"
+                        data-link="./test-ajax/in-basket.json" data-fast-order>
+                        Заказать
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -2458,10 +2418,10 @@
         <h4 class="modal__title">Ваш заказ!</h4>
         <p class="modal__desc">Укажите количество товара, контактный телефон или почту</p>
         <form id='orderForm' class='order-modal__form' action="send.html" method="POST">
+          <input type="text" style="display: none;" name="id" value="">
           <div class="order-modal__item">
             <img src="./img/image/section-img.jpg" alt="" class="order-modal__img">
             <div class="order-modal__desc">
-              Труба холоднодеформированная 16х2.5мм ст. 20 ГОСТ 8734
             </div>
           </div>
           <p id="mailOrTel" class="modal__error error">Укажите почту или номер</p>
@@ -2488,7 +2448,7 @@
             <p class="order-modal__total-price">
               <span class='order-modal__total'>Общая стоимость:</span>
 
-              <span id='orderPrice' data-price="65000" class="order-modal__price">65 000</span>
+              <span id='orderPrice' data-price="" class="order-modal__price"></span>
             </p>
             <input class="order-modal__submit modal__submit light-btn" type="submit" value="Отправить">
           </div>
@@ -2500,7 +2460,7 @@
   </div>
   <!--modal-windows-->
 
-  <script src='./js/main.min.js'></script>
+  <script src='./js/main.js'></script>
 </body>
 
 </html>
